@@ -74,7 +74,7 @@ function MapScreen ({route, navigation}) {
     </View>
     <View style={styles.bigBlue}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('All',{itemID,adminViewer})} >
         <Text style={{color: 'white'}} >A-2</Text>
       </TouchableOpacity>
     </View>
