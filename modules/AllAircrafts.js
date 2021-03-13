@@ -71,7 +71,7 @@ function AllAircraftScreen ({route, navigation}) {
         <View style = {styles.back}>
   
           <View style={styles.info}>
-            <Text style={styles.inputText}>Aircraft Serial:</Text>
+            <Text style={styles.inputText}>Aircraft Serial #:</Text>
             <TextInput style={styles.infoField} placeholder={place}
                 editable={adminViewer}> 
             </TextInput>
