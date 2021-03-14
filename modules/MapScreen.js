@@ -36,23 +36,27 @@ function MapScreen ({route, navigation}) {
   return (
   
 <View style={{flex: 1,backgroundColor:'#0a3161'}}>
+
+
 <View style={{flex: 0.2, justifyContent: 'center', alignItems: 'center', backgroundColor:'#b31942',borderRadius:30,margin:30 }}>
   <Text style={styles.topText}>
-      Hello, User {itemID}
+    Hello, User {itemID}.
   </Text>
   <Text style={styles.topText}>
-      You are in {modo} Mode
-  </Text> 
-<Text style={{flex:.5, fontSize: 20, paddingTop: 1}}>
-</Text>
+    You are in {modo} Mode
+  </Text>
+  <Text style={styles.topText}
+  onPress={() => navigation.navigate('All',{itemID,adminViewer})}>
+    Click Here to View All Aircraft
+  </Text>
 </View>
 
 <ScrollView style={{flex: 1,}}>
+
  <View style={styles.hangar}>
    
   <View style={styles.hangarInfo}>
-
-   <Text style={styles.titleText}>Hangar 745</Text>
+   <Text style={styles.titleText}>Hangar 731</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})} >
@@ -61,42 +65,22 @@ function MapScreen ({route, navigation}) {
         </Text>
       </TouchableOpacity>
    </View>
-  </View>
-
-
-   <View style={styles.grid}>
-   <View style={styles.boxRow}>
-   <View style={styles.bigBlue}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
-        <Text style={{color: 'white'}} >A-1</Text>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.bigBlue}>
+   <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('All',{itemID,adminViewer})} >
-        <Text style={{color: 'white'}} >A-2</Text>
+        <Text style={{color: 'white'}}>
+          View All Aircraft
+        </Text>
       </TouchableOpacity>
-    </View>
-    <View style={styles.bigBlue}></View>
-   </View>
-   <View style={styles.boxRow}>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-   </View>
-   <View style={styles.boxRow}>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-   </View>
-   <View style={styles.boxRow}>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
    </View>
   </View>
+
+
  </View>
+
+ 
+
+
 
  <View style={styles.runway}>
  <View style={styles.textRun}>
@@ -153,7 +137,11 @@ const styles = StyleSheet.create({
 
 
 //{flex: 1, position: 'relative', flex: 1,flexDirection: 'row', justifyContent:"space-evenly"
+    
+  },
 
+  bold: {
+    fontWeight: 'bold'
   },
   textRun: {
     justifyContent: 'center',
@@ -171,9 +159,9 @@ const styles = StyleSheet.create({
   topText: {
     flex:.5, 
     color: '#fff', 
-    fontSize: 20, 
-    paddingTop: 10,
-    paddingBottom: 5
+    fontSize: 15, 
+    padding: 5,
+  
   },
   inputView: {
     backgroundColor: "#FF0000",
@@ -244,7 +232,7 @@ const styles = StyleSheet.create({
    flex: .5,
    justifyContent: 'center',
    backgroundColor: '#b31942', 
-   height: 800,
+   height: 300,
    borderRadius: 40,
    margin: 30
   },
