@@ -35,29 +35,27 @@ function LoginScreen ({navigation}) {
   //const [login, setLogin] = useState(false);
 
   function check(Username, Password){
-    /*
-    if (Username == use){
-      console.log("username correct")
+    var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username="+Username+"&password="+Password
+    const requestOptions = {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' }
     }
-   
-    if (Password == pass){
-      console.log("password correct")
-    }
-    */
-
-    if ((Username == use) && (Password == pass)){
-   //   login = true
-     // setLogin(login)
-      mode = true
-      return true
-    }
-    else if ((Username == use2) && (Password == pass)) {
-      mode = false
-      return true
-    }
-    else{
-      return false
-    }
+    
+    console.log(url)
+    fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(users => {
+        if(users.length > 0) 
+        {
+            mode = false
+            return false
+        }
+        else
+        {
+        alert("Login was unsuccessful. The username or password was incorrect")
+        }
+    })  
 
 
   }
