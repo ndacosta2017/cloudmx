@@ -55,7 +55,7 @@ function HangarScreen ({route, navigation}) {
         </View>
   
         <View style={styles.info}>
-          <Text style={styles.inputText}>Aircraft under Maintenance: </Text>
+          <Text style={styles.inputText}>Aircraft Under Maintenance: </Text>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>

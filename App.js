@@ -8,6 +8,7 @@ import MapScreen from './modules/MapScreen';
 import AirCraftScreen from './modules/AirCraftScreen';
 import HangarScreen from './modules/HangarScreen';
 import MaintenanceHistoryScreen from './modules/MaintenanceScreen';
+import AllAircraftScreen from './modules/AllAircrafts'
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
@@ -36,9 +37,14 @@ function App(navigation) {
       
       <Stack.Screen name="Air" component={AirCraftScreen}  
          options={{title: 'Aircraft'}} />
+         
+      <Stack.Screen name="All" component={AllAircraftScreen} 
+         options={{title: 'All Aircrafts'}}/>
 
       <Stack.Screen name="History" component={MaintenanceHistoryScreen} 
          options={{title: 'Maintenance History'}}/>
+         
+      
  
       </Stack.Navigator>
     </NavigationContainer>
