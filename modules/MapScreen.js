@@ -35,10 +35,9 @@ function MapScreen ({route, navigation}) {
 
   return (
   
-<View style={{flex: 1,backgroundColor:'#0a3161'}}>
-
-
-<View style={{flex: 0.2, justifyContent: 'center', alignItems: 'center', backgroundColor:'#b31942',borderRadius:30,margin:30 }}>
+<View style={styles.overall}>
+  
+<View style={styles.main}>
   <Text style={styles.topText}>
     Hello, User {itemID}.
   </Text>
@@ -195,6 +194,18 @@ function MapScreen ({route, navigation}) {
 }
 
 const styles = StyleSheet.create({
+  overall: {
+    flex: 1,
+    backgroundColor:'#0a3161'
+  },
+  main:{
+    flex: 0.2, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor:'#b31942',
+    borderRadius:30,
+    margin:30
+  },
   container: {
     flex: 1,
     backgroundColor: "gray",

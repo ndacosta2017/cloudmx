@@ -91,6 +91,17 @@ function AirCraftScreen ({route, navigation}) {
       setSerial(Serial);
   
     }
+
+    function send(i){
+      if (Serial.length > 0){
+        //update this field of data[i]
+        console.log('its full')
+      }
+      else{
+        // do nothing
+        console.log('its empty')
+      }
+    }
   
     //console.log('\n\nTESTING: ',data)
 
@@ -125,6 +136,19 @@ function AirCraftScreen ({route, navigation}) {
 
 var test = ''
 
+        <View style={styles.info}>
+          <Text style={styles.inputText}>Other Maintainer:</Text>
+          <Text style={styles.inputText}>{} </Text>
+          <View style={styles.inputText}>
+           <FlatList
+            style={styles.inputText}
+            data={DATA}
+            renderItem={renderItem }
+            keyExtractor={item => item.id}
+            />
+          </View>
+        </View>
+
 myfunc().then(response => console.log(response[0].serial_No));
 
 console.log('TESTING!!!')
@@ -136,11 +160,7 @@ console.log('TESTING!!!')
 
     return (
     
-      <View style = {{flex: 1, 
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        backgroundColor: '#0a3161' ,
-        padding: 10}}>
+    <View style = {styles.main}>
       
       <View style={styles.info}>
           <View style={styles.display}>
@@ -165,7 +185,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
           <View style={styles.display}>
             <Text style={styles.inputText}>
-              Aircraft Status: {itemID}
+              Aircraft Status: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
@@ -191,8 +211,11 @@ console.log('TESTING!!!')
             <Text style={styles.inputText}>
               {empty}
             </Text>
+            {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
+              {data[i].LOCATION}
             </Text>
+            )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
@@ -200,94 +223,114 @@ console.log('TESTING!!!')
         </View>
   
         <View style={styles.info}>
-          <Text style={styles.inputText}>Maintenance Issues: {
-            <FlatList
-            horizontal= {true}
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Text style={styles.inputText}>{item.Remarks}</Text>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Remarks: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].Remarks}
+            </Text>
             )}
-            />
-          } </Text>
-          <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
-          </TextInput>
-        </View>
-  
-        <View style={styles.info}>
-          <Text style={styles.inputText}>Lead Maintainer: {
-            <FlatList
-            horizontal= {true}
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Text style={styles.inputText}>{item.Maintenance_Team}</Text> 
-            )}
-            />
-          } </Text>
-          <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
-          </TextInput>
-        </View>
-  
-        <View style={styles.info}>
-          <Text style={styles.inputText}>Other Maintainer:</Text>
-          <Text style={styles.inputText}>{} </Text>
-          <View style={styles.inputText}>
-           <FlatList
-            style={styles.inputText}
-            data={DATA}
-            renderItem={renderItem }
-            keyExtractor={item => item.id}
-            />
           </View>
-        </View>
-  
-        <View style={styles.info}>
-          <Text style={styles.inputText}>Ordered Parts:{
-             <FlatList
-             horizontal= {true}
-             data={data}
-             keyExtractor={({ id }, index) => id}
-             renderItem={({ item }) => (
-               <Text style={styles.inputText}>{item.MICAPS}</Text>
-             )}
-             />
-
-          }  </Text>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
         </View>
   
         <View style={styles.info}>
-          <Text style={styles.inputText}>Flying Schedule: {
-            <FlatList
-            horizontal= {true}
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Text style={styles.inputText}>{item.LAST_FLT}</Text>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              SORTIE_TYPE: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].SORTIE_TYPE}
+            </Text>
             )}
-            />
-          } </Text>
+          </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+          </TextInput>
+        </View>
+ 
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Maintenance Team: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].Maintenance_Team}
+            </Text>
+            )}
+          </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
         </View>
   
         <View style={styles.info}>
-          <Text style={styles.inputText}>Maintenance Period: {
-            <FlatList
-            horizontal= {true}
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Text style={styles.inputText}>{item.SORTIE_TYPE}</Text>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              MICAPS: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].MICAPS}
+            </Text>
             )}
-            />
-          } </Text>
+          </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+          </TextInput>
+        </View>
+  
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Last Flight: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].LAST_FLT}
+            </Text>
+            )}
+          </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+          </TextInput>
+        </View>
+  
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              ETIC: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].ETIC}
+            </Text>
+            )}
+          </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
@@ -300,9 +343,9 @@ console.log('TESTING!!!')
              Maintenance History
           </Text>
           <Text style={styles.history} onPress={ (adminViewer) ? 
-            () => console.log(Serial) : 
+            () => {send(i)} : 
             () => alert('You are not an Administrator. You can not edit data') }>
-             Overide
+             Override
           </Text>
           </View>
         </View>
@@ -315,6 +358,13 @@ console.log('TESTING!!!')
   }
 
   const styles = StyleSheet.create({
+    main: {
+      flex: 1, 
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      backgroundColor: '#0a3161' ,
+      padding: 10
+    },
     container: {
       flex: 1,
       backgroundColor: "gray",
