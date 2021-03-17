@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 //import * as React from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect,useLayoutEffect, useState } from 'react';
 import { StyleSheet,TextInput,ActivityIndicator, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,10 +11,11 @@ function AirCraftScreen ({route, navigation}) {
     React.useLayoutEffect(() => {
       navigation.setOptions({
         headerRight: () => (
-          <TouchableOpacity style={{}} 
+        <TouchableOpacity style={{}} 
           onPress = {() =>  navigation.navigate('Sign-in') } >
-          <Text style={styles.rightHead} 
-          >Log Out</Text>
+          <Text style={styles.rightHead}>
+            Log Out
+          </Text>
         </TouchableOpacity>
         ),
       });
@@ -76,7 +77,7 @@ function AirCraftScreen ({route, navigation}) {
       headers: { 'Content-Type': 'application/json' }
   }
   
-    useEffect(() => {
+  useEffect(() => {
       fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
         .then((response) => response.json())
         .then((json) => setData(json))
@@ -91,8 +92,13 @@ function AirCraftScreen ({route, navigation}) {
   
     }
   
+    //console.log('\n\nTESTING: ',data)
 
     var status = 'hwllo'
+
+    var i = 0
+
+    var empty = ' '
 
     const air = ['hello ','world']
 /*
@@ -137,18 +143,19 @@ console.log('TESTING!!!')
         padding: 10}}>
       
       <View style={styles.info}>
-          <Text style={styles.inputText}>Aircraft Serial: {
-            <FlatList
-            horizontal={true}
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-             <View style= {styles.inputText}>
-              <Text style={styles.inputText}>{item.serial_No}</Text>
-            </View>
+          <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Aircraft Serial: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].serial_No}
+            </Text>
             )}
-            />
-          } </Text>
+          </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(Serial) => setSerial(Serial)}>  
           </TextInput>
@@ -156,16 +163,19 @@ console.log('TESTING!!!')
 
 
         <View style={styles.info}>
-          <Text style={styles.inputText}>Aircraft Status:{
-            <FlatList
-            horizontal={true}
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Text style={styles.inputText}>{item.Aircraft_status}</Text>
+          <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Aircraft Status: {itemID}
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].Aircraft_status}
+            </Text>
             )}
-            />
-          } </Text>
+          </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
@@ -174,19 +184,16 @@ console.log('TESTING!!!')
 
   
         <View style={styles.info}>
-
-        {isLoading ? <ActivityIndicator/> : (
-          <Text style={styles.inputText}>Aircraft Location: {
-            <FlatList
-            data={data}
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Text style={styles.inputText}>{item.LOCATION}</Text>
-            )}
-            />
-          }</Text>
-
-          )}
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Aircraft Location: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            <Text style={styles.inputText}>
+            </Text>
+          </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
@@ -195,6 +202,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
           <Text style={styles.inputText}>Maintenance Issues: {
             <FlatList
+            horizontal= {true}
             data={data}
             keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
@@ -210,6 +218,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
           <Text style={styles.inputText}>Lead Maintainer: {
             <FlatList
+            horizontal= {true}
             data={data}
             keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
@@ -238,6 +247,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
           <Text style={styles.inputText}>Ordered Parts:{
              <FlatList
+             horizontal= {true}
              data={data}
              keyExtractor={({ id }, index) => id}
              renderItem={({ item }) => (
@@ -254,6 +264,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
           <Text style={styles.inputText}>Flying Schedule: {
             <FlatList
+            horizontal= {true}
             data={data}
             keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
@@ -269,6 +280,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
           <Text style={styles.inputText}>Maintenance Period: {
             <FlatList
+            horizontal= {true}
             data={data}
             keyExtractor={({ id }, index) => id}
             renderItem={({ item }) => (
@@ -289,7 +301,7 @@ console.log('TESTING!!!')
           </Text>
           <Text style={styles.history} onPress={ (adminViewer) ? 
             () => console.log(Serial) : 
-            () => alert('You are not an Administrator. You can edit data') }>
+            () => alert('You are not an Administrator. You can not edit data') }>
              Overide
           </Text>
           </View>
@@ -313,7 +325,11 @@ console.log('TESTING!!!')
     image: {
       marginBottom: 40,
     },
-  
+    display:{
+      flexDirection: 'row',
+      alignItems: "center",
+      justifyContent: "center",
+    },
     inputView: {
       backgroundColor: "#FF0000",
       borderRadius: 30,
