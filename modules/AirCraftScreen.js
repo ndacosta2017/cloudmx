@@ -85,7 +85,7 @@ function AirCraftScreen ({route, navigation}) {
         .finally(() => setLoading(false));
     }, []);
 
-    const [Serial, setSerial] = useState('');
+    const [Status, setStatus] = useState('');
 
     function serial_func(Serial){
       setSerial(Serial);
@@ -93,9 +93,9 @@ function AirCraftScreen ({route, navigation}) {
     }
 
     function send(i){
-      if (Serial.length > 0){
+      if (Status.length > 0){
         //update this field of data[i]
-        console.log('its full')
+        console.log(data[i].serial_No)
       }
       else{
         // do nothing
@@ -176,9 +176,6 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer} onChangeText={(Serial) => setSerial(Serial)}>  
-          </TextInput>
         </View>
 
 
@@ -197,7 +194,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
           </TextInput>
         </View>
 
