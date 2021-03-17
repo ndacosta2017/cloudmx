@@ -45,7 +45,7 @@ function MapScreen ({route, navigation}) {
   <Text style={styles.topText}>
     You are in {modo} Mode
   </Text>
-  <Text style={styles.topText}
+  <Text style={styles.topBold}
   onPress={() => navigation.navigate('All',{itemID,adminViewer})}>
     Click Here to View All Aircraft
   </Text>
@@ -53,8 +53,7 @@ function MapScreen ({route, navigation}) {
 
 <ScrollView style={{flex: 1,}}>
 
- <View style={styles.hangar}>
-   
+ <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
    <Text style={styles.titleText}>Hangar 731</Text>
    <View style={styles.infoButton}>
@@ -74,42 +73,117 @@ function MapScreen ({route, navigation}) {
       </TouchableOpacity>
    </View>
   </View>
-
-
  </View>
 
- 
-
-
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Hangar 746</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}}>
+          View Hangar Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('All',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}}>
+          View All Aircraft
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
 
  <View style={styles.runway}>
  <View style={styles.textRun}>
-   <Text style={styles.titleText}>Runway</Text></View>
+   <Text style={styles.titleText}>Runway</Text>
+  </View>
   <View style={styles.grid}>
    <View style={styles.boxRow}>
    <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
-        <Text style={{color: 'white'}} >M-1</Text>
+        <Text style={{color: 'white'}} >S - 1</Text>
       </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
-        <Text style={{color: 'white'}} >M-2</Text>
+        <Text style={{color: 'white'}} >S - 2</Text>
       </TouchableOpacity>
     </View>
-    <View style={styles.bigBlue}></View>
    </View>
    <View style={styles.boxRow}>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 3</Text>
+    </TouchableOpacity>
+    </View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 4</Text>
+    </TouchableOpacity>
+    </View>
    </View>
    <View style={styles.boxRow}>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
-    <View style={styles.bigBlue}></View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 5</Text>
+    </TouchableOpacity>
+    </View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 6</Text>
+    </TouchableOpacity>
+    </View>
+   </View>
+   <View style={styles.boxRow}>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 7</Text>
+    </TouchableOpacity>
+    </View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 8</Text>
+    </TouchableOpacity>
+    </View>
+   </View>
+   <View style={styles.boxRow}>
+    <View style={styles.bigBlue}> 
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 9</Text>
+    </TouchableOpacity></View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 10</Text>
+      </TouchableOpacity>
+    </View>
+   </View>
+   <View style={styles.boxRow}>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 11</Text>
+    </TouchableOpacity>
+    </View>
+    <View style={styles.bigBlue}>
+    <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        <Text style={{color: 'white'}} >S - 12</Text>
+    </TouchableOpacity>
+    </View>
    </View>
   </View>
  </View>
@@ -129,7 +203,7 @@ const styles = StyleSheet.create({
   },
   boxRow: {
     position: 'relative',
-    top: 30, 
+    top: 15, 
     bottom: 30,
     flex: 1,
     flexDirection: 'row', 
@@ -146,7 +220,7 @@ const styles = StyleSheet.create({
   textRun: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding:20  
+    padding: 20
   },
   grid: {
     flex: 1,
@@ -161,6 +235,14 @@ const styles = StyleSheet.create({
     color: '#fff', 
     fontSize: 15, 
     padding: 5,
+  
+  },
+  topBold: {
+    flex:.5, 
+    color: '#fff', 
+    fontSize: 15, 
+    padding: 5,
+    fontWeight: 'bold'
   
   },
   inputView: {
@@ -180,7 +262,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   titleText: {
-    fontSize: 30,
+    fontSize: 40,
   },
 
   forgot_button: {
@@ -200,9 +282,8 @@ const styles = StyleSheet.create({
   hangarInfo: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding:20,
+    padding: 20,
   },
-
   loginBtn: {
     width: "80%",
     borderRadius: 25,
@@ -232,15 +313,15 @@ const styles = StyleSheet.create({
    flex: .5,
    justifyContent: 'center',
    backgroundColor: '#b31942', 
-   height: 300,
+   height: 275,
    borderRadius: 40,
    margin: 30
   },
   runway : {
     flex: .5,
     justifyContent: 'center',
-    backgroundColor: 'green', 
-    height: 600,
+    backgroundColor: '#D2AF39', 
+    height: 800,
     borderRadius: 40,
     margin: 30
    },

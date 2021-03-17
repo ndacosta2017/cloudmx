@@ -48,18 +48,33 @@ function LoginScreen ({navigation}) {
       .then(users => {
         if(users.length > 0) 
         {
-            mode = false
-            return false
+            mode = true
+            return true
         }
         else
         {
-        alert("Login was unsuccessful. The username or password was incorrect")
+        console.log("Login was unsuccessful. The username or password was incorrect")
         }
     })  
 
 
   }
   //const [email, setEmail] = useState("");
+  /*
+
+  if (username == Admin){
+    mode = true
+    return true
+  }
+  else if (username == Viewer){
+    mode = false
+    return true
+  }
+  else {
+    return false 
+  }
+
+  */
   //const [password, setPass] = useState(""); style={styles.logo}
 
     return (
@@ -88,7 +103,7 @@ function LoginScreen ({navigation}) {
 
       <TouchableOpacity>
         <Text style={styles.forgot_button} 
-        onPress = {() =>  navigation.navigate('Sign-in') } 
+        onPress = {() =>  navigation.navigate('Map',{itemID: Username, adminViewer: mode}) } 
         >Forgot Password?</Text>
       </TouchableOpacity>
 
