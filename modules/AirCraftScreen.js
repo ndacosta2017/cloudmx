@@ -96,7 +96,7 @@ function AirCraftScreen ({route, navigation}) {
 
     var status = 'hwllo'
 
-    var i = 0
+    var i = itemID
 
     var empty = ' '
 

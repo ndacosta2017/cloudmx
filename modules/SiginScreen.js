@@ -56,7 +56,7 @@ function LoginScreen ({navigation}) {
         navigation.navigate('Map',{itemID: Username, adminViewer: mode})
     }
     else
-        alert('Wrong username and/or password')     
+        alert('Wrong Username and/or Password')     
     
   }
     

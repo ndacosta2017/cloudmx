@@ -56,13 +56,13 @@ function AllAircraftScreen ({route, navigation}) {
         const Item = ({ title }) => (
           <View style={styles.item}>
             <Text style={styles.inputText} onPress={() => 
-              navigation.navigate('Air',{itemID, adminViewer})}>{title}
+              navigation.navigate('Air',{itemID: title, adminViewer})}>Aircraft {title}
             </Text>
           </View>
         );
     
         const renderItem = ({ item }) => (
-          <Item title={item.title}/>
+          <Item title={item.id}/>
         );
     
         const air = ['hello ','world']
