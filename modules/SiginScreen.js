@@ -34,31 +34,50 @@ function LoginScreen ({navigation}) {
 
   //const [login, setLogin] = useState(false);
 
-  function check(Username, Password){
+  async function check(navigation){
     var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username="+Username+"&password="+Password
+    var url2 = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin?username="+Username+"&password="+Password
     const requestOptions = {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' }
     }
+    if(await postData(url, requestOptions))
+    {
+        //the user is viewer
+        mode = false
+        navigation.navigate('Map',{itemID: Username, adminViewer: mode})
+    }
     
-    console.log(url)
-    fetch(url, requestOptions)
+    else if(await postData(url2, requestOptions))
+    {
+        //the user is admin
+        mode = true
+        navigation.navigate('Map',{itemID: Username, adminViewer: mode})
+    }
+    else
+        alert('Wrong username and/or password')     
+    
+  }
+    
+  // Example POST method implementation:
+ function postData(url, requestOptions) {
+ 
+     var test = fetch(url, requestOptions)
       .then(response => response.json())
       .then(users => {
         if(users.length > 0) 
         {
-            mode = true
             return true
         }
         else
         {
-        console.log("Login was unsuccessful. The username or password was incorrect")
+            return false
         }
-    })  
-
-
-  }
+    })
+ //console.log(test)
+ return test
+}
   //const [email, setEmail] = useState("");
   /*
 
@@ -108,9 +127,7 @@ function LoginScreen ({navigation}) {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginBtn}
-      onPress = {check(Username,Password) ? 
-      () =>  navigation.navigate('Map',{itemID: Username, adminViewer: mode}) : 
-      () => alert('Wrong username and/or password') } 
+      onPress = { () => check(navigation) } 
       >
         <Text style={styles.inputText} >
           LOGIN
