@@ -54,6 +54,7 @@ function AirCraftScreen ({route, navigation}) {
       
     ];
 
+    var i = itemID
 
     const Item = ({ title }) => (
       <View style={styles.item}>
@@ -67,6 +68,15 @@ function AirCraftScreen ({route, navigation}) {
 
     //var adminViewer = true
     var place = ' Override Data'
+
+    function reload(){
+      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  
+    }
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -85,34 +95,37 @@ function AirCraftScreen ({route, navigation}) {
         .finally(() => setLoading(false));
     }, []);
 
-    const [Status, setStatus] = useState('');
+    //const Serial = data[i].serial_No
+    //console.log(data)
 
-    function serial_func(Serial){
-      setSerial(Serial);
-  
+    var stat = ''
+
+    const [Serial, setSerial] = useState('');
+    const [Status, setStatus] = useState('');
+    const [Location, setLocation] = useState('');
+
+    function addSerial(num){
+      stat = num
     }
 
     function send(i){
       if (Status.length > 0){
         //update this field of data[i]
         //data[i].Aircraft_status = Status
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w=xx-xxxx', requestOptions)
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w='+stat, requestOptions)
         .then(response => response.json())
         .then(users => console.log(users))
-        .then(navigation.navigate('Map',{itemID, adminViewer}))
       }
-      else{
-        // do nothing
-        console.log('its empty')
-      }
-      navigation.navigate('Air',{itemID, adminViewer})
+     
+      reload()
     }
   
     //console.log('\n\nTESTING: ',data)
 
     var status = 'hwllo'
 
-    var i = itemID
+    
 
     var empty = ' '
 
@@ -178,6 +191,7 @@ console.log('TESTING!!!')
             {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
               {data[i].serial_No}
+              {addSerial(data[i].serial_No)}
             </Text>
             )}
           </View>
@@ -220,7 +234,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Location) => setLocation(Location)}> 
           </TextInput>
         </View>
   
