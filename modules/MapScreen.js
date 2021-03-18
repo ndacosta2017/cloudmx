@@ -36,7 +36,7 @@ function MapScreen ({route, navigation}) {
   return (
   
 <View style={styles.overall}>
-  
+
 <View style={styles.main}>
   <Text style={styles.topText}>
     Hello, User {itemID}.
@@ -57,7 +57,7 @@ function MapScreen ({route, navigation}) {
    <Text style={styles.titleText}>Hangar 731</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -79,7 +79,7 @@ function MapScreen ({route, navigation}) {
    <Text style={styles.titleText}>Hangar 746</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>

@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { useState } from 'react';
-import { StyleSheet, TextInput,Text,TouchableOpacity, View } from 'react-native';
+import {  useEffect,useLayoutEffect, useState } from 'react';
+import { StyleSheet, TextInput,ActivityIndicator,Text,TouchableOpacity, View } from 'react-native';
 
 function HangarScreen ({route, navigation}) {
 
@@ -26,25 +26,88 @@ function HangarScreen ({route, navigation}) {
   
     }
 
-  //var adminViewer = true
-  var place = 'true'
+    var place = ' Override Data'
+
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+
+    const requestOptions = {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' }
+  }
+  
+  useEffect(() => {
+      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar',requestOptions)
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }, []);
+
+    const [Status, setStatus] = useState('');
+
+    function serial_func(Serial){
+      setSerial(Serial);
+  
+    }
+
+    function send(i){
+      if (Status.length > 0){
+        //update this field of data[i]
+      }
+      else{
+        // do nothing
+        console.log('its empty')
+      }
+    }
+  
+    console.log('\ndata: ',data)
+
+    var status = 'hwllo'
+
+    var i = itemID
+
+    var empty = ' '
+
+    const air = ['hello ','world']
 
     return (
     
       <View style = {styles.overall}>
   
         <View style={styles.info}>
-        <Text style={styles.inputText} >Hangar Identification: {}</Text>
+        <Text style={styles.inputText}>
+              Hangar Identification: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].building_Name}
+            </Text>
+            )}
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
         </View>
   
         <View style={styles.info}>
-          <Text style={styles.inputText}>If Usable: </Text>
-          <TextInput style={styles.infoField} placeholder={place}
+        <Text style={styles.inputText}>
+              Hangar Status: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].building_status}
+            </Text>
+            )}
+        <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
-          </TextInput>
+        </TextInput>
         </View>
   
         <View style={styles.info}>

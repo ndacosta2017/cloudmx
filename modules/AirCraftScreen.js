@@ -95,7 +95,7 @@ function AirCraftScreen ({route, navigation}) {
     function send(i){
       if (Status.length > 0){
         //update this field of data[i]
-        console.log(data[i].serial_No)
+        //data[i].Aircraft_status = Status
       }
       else{
         // do nothing
