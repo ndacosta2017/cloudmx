@@ -96,11 +96,16 @@ function AirCraftScreen ({route, navigation}) {
       if (Status.length > 0){
         //update this field of data[i]
         //data[i].Aircraft_status = Status
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w=xx-xxxx', requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+        .then(navigation.navigate('Map',{itemID, adminViewer}))
       }
       else{
         // do nothing
         console.log('its empty')
       }
+      navigation.navigate('Air',{itemID, adminViewer})
     }
   
     //console.log('\n\nTESTING: ',data)

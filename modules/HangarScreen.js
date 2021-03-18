@@ -55,6 +55,8 @@ function HangarScreen ({route, navigation}) {
     function send(i){
       if (Status.length > 0){
         //update this field of data[i]
+        
+
       }
       else{
         // do nothing
