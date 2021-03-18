@@ -60,11 +60,11 @@ function HangarScreen ({route, navigation}) {
       }
       else{
         // do nothing
-        console.log('its empty')
+  //      console.log('its empty')
       }
     }
   
-    console.log('\ndata: ',data)
+   // console.log('\ndata: ',data)
 
     var status = 'hwllo'
 
