@@ -101,8 +101,17 @@ function AirCraftScreen ({route, navigation}) {
     var stat = ''
 
     const [Serial, setSerial] = useState('');
+
     const [Status, setStatus] = useState('');
     const [Location, setLocation] = useState('');
+    const [Remarks, setRemarks] = useState('');
+    const [Sortie, setSortie] = useState('');
+    const [Maintenance_H, setMaintenance] = useState('');
+    const [Micaps_H, setMICAPS] = useState('');
+    const [LASTFLIGHT, setLastFlight] = useState('');
+    const [ETIC_H, setETIC] = useState('');
+
+
 
     function addSerial(num){
       stat = num
@@ -114,6 +123,62 @@ function AirCraftScreen ({route, navigation}) {
         //data[i].Aircraft_status = Status
        // console.log('STAT:',stat)
         fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (Location.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+Location+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (Remarks.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?remark='+Remarks+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (Sortie.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?sortie='+Sortie+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (Maintenance_H.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?team='+Maintenance_H+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (Micaps_H.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?micaps='+Micaps_H+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (LASTFLIGHT.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?last_flt='+LASTFLIGHT+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (ETIC_H.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?etic='+ETIC_H+'&w='+stat, requestOptions)
         .then(response => response.json())
         .then(users => console.log(users))
       }
@@ -253,7 +318,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Remarks) => setRemarks(Remarks)}> 
           </TextInput>
         </View>
   
@@ -272,7 +337,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Sortie) => setSortie(Sortie)}> 
           </TextInput>
         </View>
  
@@ -291,7 +356,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Maintenance_H) => setMaintenance(Maintenance_H)}> 
           </TextInput>
         </View>
   
@@ -310,7 +375,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Micaps_H) => setMICAPS(Micaps_H)}> 
           </TextInput>
         </View>
   
@@ -329,7 +394,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(LASTFLIGHT) => setLastFlight(LASTFLIGHT)}> 
           </TextInput>
         </View>
   
@@ -348,7 +413,7 @@ console.log('TESTING!!!')
             )}
           </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(ETIC_H) => setETIC(ETIC_H)}> 
           </TextInput>
         </View>
 
