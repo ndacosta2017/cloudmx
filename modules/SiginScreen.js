@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect,useLayoutEffect, } from 'react';
 import { StyleSheet, Text, View, Button, StatusBar, TouchableOpacity, Image } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -17,6 +17,8 @@ function LoginScreen ({navigation}) {
   const use2 = 'viewer'
   var ex = 35
   var mode = false
+  var hangID = 0
+  var airID = 1
 
   const [Username, setUsername] = useState('Username');
 
@@ -32,6 +34,12 @@ function LoginScreen ({navigation}) {
 
   }
 
+  useEffect(() => {
+    setUsername('')
+    setPassword('')
+
+  }, []);
+
   //const [login, setLogin] = useState(false);
 
   async function check(navigation){
@@ -46,14 +54,14 @@ function LoginScreen ({navigation}) {
     {
         //the user is viewer
         mode = false
-        navigation.navigate('Map',{itemID: Username, adminViewer: mode})
+        navigation.navigate('Map',{itemID: Username, adminViewer: mode,aicraftID: airID,hangarID: hangID})
     }
     
     else if(await postData(url2, requestOptions))
     {
         //the user is admin
         mode = true
-        navigation.navigate('Map',{itemID: Username, adminViewer: mode})
+        navigation.navigate('Map',{itemID: Username, adminViewer: mode, aircraftID: airID,hangarID: hangID})
     }
     else
         alert('Wrong Username and/or Password')     
@@ -97,9 +105,9 @@ function LoginScreen ({navigation}) {
   //const [password, setPass] = useState(""); style={styles.logo}
 
     return (
-      <View style={styles.container}>
+    <View style={styles.container}>
       <Image style={styles.logo} source={require("../assets/Air_Force_logo.png")} />
-
+      
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
@@ -122,7 +130,7 @@ function LoginScreen ({navigation}) {
 
       <TouchableOpacity>
         <Text style={styles.forgot_button} 
-        onPress = {() =>  navigation.navigate('Map',{itemID: Username, adminViewer: mode}) } 
+        onPress = {() =>  navigation.navigate('Map',{itemID: Username, adminViewer: mode,aircraftID: airID,hangarID: hangID}) } 
         >Forgot Password?</Text>
       </TouchableOpacity>
 
@@ -163,7 +171,7 @@ function LoginScreen ({navigation}) {
       color: 'white'
     },
     rightHead:{
-      color: '#b31942',
+      color: '#fff',
       fontSize: 18,
       paddingRight: 10
     },

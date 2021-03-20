@@ -5,7 +5,7 @@ import { StyleSheet, Text,TextInput, View,Button,TouchableOpacity, FlatList } fr
 function AllAircraftScreen ({route, navigation}) {
 
 
-    const {itemID, adminViewer} = route.params;
+    const {itemID, adminViewer,aircraftID,hangarID} = route.params;
     //const adminViewer = true;
     
       React.useLayoutEffect(() => {
@@ -56,7 +56,7 @@ function AllAircraftScreen ({route, navigation}) {
         const Item = ({ title }) => (
           <View style={styles.item}>
             <Text style={styles.inputText} onPress={() => 
-              navigation.navigate('Air',{itemID: title, adminViewer})}>Aircraft {title}
+              navigation.navigate('Air',{itemID, adminViewer,aircraftID: title,hangarID})}>Aircraft {title}
             </Text>
           </View>
         );
@@ -138,7 +138,7 @@ function AllAircraftScreen ({route, navigation}) {
           fontSize: 60,
         },
         rightHead:{
-          color: '#b31942',
+          color: '#fff',
           fontSize: 20,
           paddingRight: 10,
           fontWeight:'bold'

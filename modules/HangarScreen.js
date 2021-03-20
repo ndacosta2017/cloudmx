@@ -5,7 +5,7 @@ import { StyleSheet, TextInput,ActivityIndicator,Text,TouchableOpacity, View } f
 
 function HangarScreen ({route, navigation}) {
 
-    const {itemID, adminViewer} = route.params;
+    const {itemID, adminViewer,aircraftID,hangarID} = route.params;
 
     React.useLayoutEffect(() => {
       navigation.setOptions({
@@ -26,7 +26,7 @@ function HangarScreen ({route, navigation}) {
   
     }
 
-    var place = ' Override Data'
+    var place = ' Update Data'
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -68,7 +68,7 @@ function HangarScreen ({route, navigation}) {
 
     var status = 'hwllo'
 
-    var i = itemID
+    var i = hangarID
 
     var empty = ' '
 
@@ -139,6 +139,20 @@ function HangarScreen ({route, navigation}) {
             editable={adminViewer}> 
           </TextInput>
         </View>
+
+        <View style={styles.info}>
+         <View style={styles.basicRow}>
+          <Text style={styles.history} onPress={() => 
+           navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID})}>
+             Maintenance History
+          </Text>
+          <Text style={styles.history} onPress={(adminViewer) ? 
+            () => alert('You are an Administrator. You can update data') : 
+            () => alert('You are not an Administrator. You can not update data') }>
+             Update
+          </Text>
+          </View>
+        </View>
   
         </View>
   
@@ -153,7 +167,10 @@ function HangarScreen ({route, navigation}) {
       alignItems: "center",
       justifyContent: "center",
     },
-  
+    basicRow:{
+      flex:1,
+      flexDirection: 'row'
+    },
     image: {
       marginBottom: 40,
     },
@@ -179,7 +196,8 @@ function HangarScreen ({route, navigation}) {
       justifyContent: 'center',
       alignSelf: 'center',
       alignItems: 'center',
-      marginLeft: '30%'
+      marginLeft: '15%'
+
     },
   
     TextInput: {
@@ -265,7 +283,7 @@ function HangarScreen ({route, navigation}) {
       borderBottomColor: 'black'
     },
     rightHead:{
-      color: '#b31942',
+      color: '#fff',
       fontSize: 20,
       paddingRight: 10,
       fontWeight: 'bold'

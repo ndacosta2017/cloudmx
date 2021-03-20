@@ -4,7 +4,7 @@ import { StyleSheet, Text,TextInput, View,Button,TouchableOpacity, FlatList } fr
 
 function MaintenanceHistoryScreen ({route, navigation}) {
 
-  const {itemID, adminViewer} = route.params;
+  const {itemID, adminViewer,aircraftID,hangarID} = route.params;
 
 //        onPress={() =>  navigation.navigate('Map',{itemID, adminViewer})}
 
@@ -53,10 +53,12 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       
     ];
 
+    var i = aircraftID
+
 
     const Item = ({ title }) => (
       <View style={styles.item}>
-        <Text style={styles.title} onPress={() => navigation.navigate('Air')}>{title}</Text>
+        <Text style={styles.title} onPress={() => navigation.navigate('Air',{itemID, adminViewer,aircraftID,hangarID})}>{title}</Text>
       </View>
     );
 
@@ -151,7 +153,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       fontSize: 60,
     },
     rightHead:{
-      color: '#b31942',
+      color: '#fff',
       fontSize: 20,
       paddingRight: 10,
       fontWeight:'bold'

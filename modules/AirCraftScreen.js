@@ -6,7 +6,7 @@ import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
 function AirCraftScreen ({route, navigation}) {
 
-    const {itemID, adminViewer} = route.params;
+    const {itemID, adminViewer,aircraftID,hangarID} = route.params;
 
     React.useLayoutEffect(() => {
       navigation.setOptions({
@@ -54,7 +54,7 @@ function AirCraftScreen ({route, navigation}) {
       
     ];
 
-    var i = itemID
+    var i = aircraftID
 
     const Item = ({ title }) => (
       <View style={styles.item}>
@@ -67,7 +67,7 @@ function AirCraftScreen ({route, navigation}) {
     );
 
     //var adminViewer = true
-    var place = ' Override Data'
+    var place = ' Update Data'
 
     function reload(){
       fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
@@ -418,15 +418,15 @@ console.log('TESTING!!!')
         </View>
 
         <View style={styles.info}>
-         <View style={{flex:1, flexDirection: 'row'}}>
+         <View style={styles.basicRow}>
           <Text style={styles.history} onPress={() => 
-           navigation.navigate('History',{itemID, adminViewer})}>
+           navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID})}>
              Maintenance History
           </Text>
           <Text style={styles.history} onPress={ (adminViewer) ? 
             () => {send(i)} : 
             () => alert('You are not an Administrator. You can not edit data') }>
-             Override
+             Update
           </Text>
           </View>
         </View>
@@ -445,6 +445,10 @@ console.log('TESTING!!!')
       alignItems: 'flex-start',
       backgroundColor: '#0a3161' ,
       padding: 10
+    },
+    basicRow:{
+      flex:1,
+      flexDirection: 'row'
     },
     container: {
       flex: 1,
@@ -486,7 +490,7 @@ console.log('TESTING!!!')
       color: 'white'
     },
     rightHead:{
-      color: '#b31942',
+      color: '#fff',
       fontSize: 20,
       paddingRight: 10,
       fontWeight:'bold'

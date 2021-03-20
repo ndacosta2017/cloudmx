@@ -12,7 +12,7 @@ function MapScreen ({route, navigation}) {
 
 
 
-  const { itemID, adminViewer} = route.params;
+  const { itemID, adminViewer,aircraftID,hangarID} = route.params;
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -45,7 +45,7 @@ function MapScreen ({route, navigation}) {
     You are in {modo} Mode
   </Text>
   <Text style={styles.topBold}
-  onPress={() => navigation.navigate('All',{itemID,adminViewer})}>
+  onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})}>
     Click Here to View All Aircraft
   </Text>
 </View>
@@ -54,10 +54,10 @@ function MapScreen ({route, navigation}) {
 
  <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
-   <Text style={styles.titleText}>Hangar 731</Text>
+   <Text style={styles.titleText}>Hangar 731 {JSON.stringify(aircraftID)}</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer})} >
+        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -65,7 +65,7 @@ function MapScreen ({route, navigation}) {
    </View>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}}>
           View All Aircraft
         </Text>
@@ -79,7 +79,7 @@ function MapScreen ({route, navigation}) {
    <Text style={styles.titleText}>Hangar 746</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer})} >
+        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -87,7 +87,7 @@ function MapScreen ({route, navigation}) {
    </View>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}}>
           View All Aircraft
         </Text>
@@ -104,13 +104,13 @@ function MapScreen ({route, navigation}) {
    <View style={styles.boxRow}>
    <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 1</Text>
       </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 2</Text>
       </TouchableOpacity>
     </View>
@@ -118,13 +118,13 @@ function MapScreen ({route, navigation}) {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 3</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 4</Text>
     </TouchableOpacity>
     </View>
@@ -132,13 +132,13 @@ function MapScreen ({route, navigation}) {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 5</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 6</Text>
     </TouchableOpacity>
     </View>
@@ -146,13 +146,13 @@ function MapScreen ({route, navigation}) {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 7</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 8</Text>
     </TouchableOpacity>
     </View>
@@ -160,12 +160,12 @@ function MapScreen ({route, navigation}) {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}> 
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 9</Text>
     </TouchableOpacity></View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 10</Text>
       </TouchableOpacity>
     </View>
@@ -173,13 +173,13 @@ function MapScreen ({route, navigation}) {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 11</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer})} >
+        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}} >S - 12</Text>
     </TouchableOpacity>
     </View>
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black'
   },
   rightHead:{
-    color: '#b31942',
+    color: '#fff',
     fontSize: 20,
     paddingRight: 10,
     fontWeight: 'bold'
