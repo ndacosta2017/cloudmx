@@ -34,6 +34,10 @@ function LoginScreen ({navigation}) {
 
   }
 
+  const [lockOut,setLockOut] = useState(true)
+
+  const [wrongCredentials,setWrongCredentials] = useState(5)
+
   useEffect(() => {
     setUsername('')
     setPassword('')
@@ -43,6 +47,14 @@ function LoginScreen ({navigation}) {
   //const [login, setLogin] = useState(false);
 
   async function check(navigation){
+
+    if ((wrongCredentials == 0) || (lockOut == false)){
+      setLockOut(false)
+      alert('You have been locked out of the app for repeated failed login attempts. Please alert an admin for assistance or click the link above if you have forgotten your password.')
+    }
+
+    if (wrongCredentials > 0){
+
     var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username="+Username+"&password="+Password
     var url2 = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin?username="+Username+"&password="+Password
     const requestOptions = {
@@ -60,12 +72,22 @@ function LoginScreen ({navigation}) {
     else if(await postData(url2, requestOptions))
     {
         //the user is admin
+        setWrongCredentials(5)
         mode = true
         navigation.navigate('Map',{itemID: Username, adminViewer: mode, aircraftID: airID,hangarID: hangID})
     }
-    else
-        alert('Wrong Username and/or Password')     
-    
+    else{
+      setWrongCredentials(wrongCredentials - 1)
+      if (wrongCredentials > 1){
+        alert('Wrong Username and/or Password. You have '+wrongCredentials+' more tries.')
+      }
+      if (wrongCredentials ==1){
+        alert('Wrong Username and/or Password. You have '+wrongCredentials+' more try.')
+      }
+  
+    }
+             //
+    }
   }
     
   // Example POST method implementation:
@@ -112,6 +134,7 @@ function LoginScreen ({navigation}) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
+          editable={lockOut}
           placeholder="Username"
           placeholderTextColor="white"
           onChangeText={(Username) => setUsername(Username)}
@@ -121,6 +144,7 @@ function LoginScreen ({navigation}) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
+          editable={lockOut}
           placeholder="Password"
           placeholderTextColor="white"
           secureTextEntry={true}
@@ -135,8 +159,7 @@ function LoginScreen ({navigation}) {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginBtn}
-      onPress = { () => check(navigation) } 
-      >
+      onPress = { () => check(navigation) } >
         <Text style={styles.inputText} >
           LOGIN
         </Text>
