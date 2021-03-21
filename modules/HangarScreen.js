@@ -31,6 +31,15 @@ function HangarScreen ({route, navigation}) {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
+    function reload(){
+      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar',requestOptions)
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  
+    }
+
     const requestOptions = {
       method: 'POST',
       mode: 'cors',
@@ -47,21 +56,40 @@ function HangarScreen ({route, navigation}) {
 
     const [Status, setStatus] = useState('');
 
+    var stat = ''
+
+    const [BuildingName, setBuildingName] = useState('');
+    const [BuildingStatus, setBuildingStatus] = useState('');
+
+    function addSerial(num){
+      stat = num
+    }
+
+
     function serial_func(Serial){
       setSerial(Serial);
   
     }
 
     function send(i){
-      if (Status.length > 0){
+      if (BuildingName.length > 0){
         //update this field of data[i]
-        
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
+      if (BuildingStatus.length > 0){
+        //update this field of data[i]
+        //data[i].Aircraft_status = Status
+       // console.log('STAT:',stat)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+Location+'&w='+stat, requestOptions)
+        .then(response => response.json())
+        .then(users => console.log(users))
+      }
 
-      }
-      else{
-        // do nothing
-  //      console.log('its empty')
-      }
+      reload()
     }
   
    // console.log('\ndata: ',data)
@@ -88,11 +116,10 @@ function HangarScreen ({route, navigation}) {
             {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
               {data[i].building_Name}
+              {addSerial(data[i].serial_No)}
             </Text>
             )}
-        <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
-        </TextInput>
+       
         </View>
   
         <View style={styles.info}>
@@ -108,7 +135,7 @@ function HangarScreen ({route, navigation}) {
             </Text>
             )}
         <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
         </TextInput>
         </View>
   

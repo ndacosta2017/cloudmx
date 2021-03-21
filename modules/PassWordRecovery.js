@@ -10,7 +10,7 @@ const logo = {
   height: 64
 };
 
-function LoginScreen ({navigation}) {
+function PassWordScreen ({navigation}) {
 
   const use = 'admin'
   const pass = 'pass'
@@ -33,6 +33,8 @@ function LoginScreen ({navigation}) {
     setPassword(Password);
 
   }
+
+  const [email, setEmail] = useState('');
 
   const [lockOut,setLockOut] = useState(true)
 
@@ -134,8 +136,8 @@ function LoginScreen ({navigation}) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          editable={lockOut}
-          placeholder="Username"
+          editable={false}
+          placeholder="Please enter your email address below"
           placeholderTextColor="white"
           onChangeText={(Username) => setUsername(Username)}
         />
@@ -145,23 +147,18 @@ function LoginScreen ({navigation}) {
         <TextInput
           style={styles.TextInput}
           editable={lockOut}
-          placeholder="Password"
+          placeholder="Enter your email here"
           placeholderTextColor="white"
-          secureTextEntry={true}
-          onChangeText={(Password) => setPassword(Password)}
+          secureTextEntry={false}
+          onChangeText={(email) => setEmail(email)}
         />
       </View>
 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button} 
-        onPress = {() =>  navigation.navigate('Password') } 
-        >Forgot Password?</Text>
-      </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginBtn}
-      onPress = { () => check(navigation) } >
+      onPress = { ()=> alert('An email for password verification has been sent to '+email) } >
         <Text style={styles.inputText} >
-          LOGIN
+          Send Link to Email
         </Text>
       </TouchableOpacity>
     </View>
@@ -180,9 +177,11 @@ function LoginScreen ({navigation}) {
     inputView: {
       backgroundColor: "#FF0000",
       borderRadius: 30,
-      width: "70%",
-      height: 45,
+      width: "80%",
+      height: 65,
       marginBottom: 20,
+      justifyContent: 'center',
+      alignContent: 'center',
       alignItems: "center",
     },
   
@@ -191,7 +190,11 @@ function LoginScreen ({navigation}) {
       flex: 1,
       padding: 10,
       marginLeft: 20,
-      color: 'white'
+      color: 'white',
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center'
     },
     rightHead:{
       color: '#fff',
@@ -215,7 +218,11 @@ function LoginScreen ({navigation}) {
       backgroundColor: "#000080",
     },
     inputText: {
-      color: 'white'
+      color: 'white',
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center'
     },
     logo: {
       borderColor: "blue",
@@ -229,4 +236,4 @@ function LoginScreen ({navigation}) {
     
   })
 
-export default LoginScreen ;
+export default PassWordScreen ;

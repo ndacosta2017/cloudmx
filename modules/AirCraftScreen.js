@@ -69,6 +69,9 @@ function AirCraftScreen ({route, navigation}) {
     //var adminViewer = true
     var place = ' Update Data'
 
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    
     function reload(){
       fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
       .then((response) => response.json())
@@ -78,8 +81,6 @@ function AirCraftScreen ({route, navigation}) {
   
     }
 
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
 
     const requestOptions = {
       method: 'POST',
