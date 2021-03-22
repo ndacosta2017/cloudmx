@@ -76,7 +76,7 @@ function HangarScreen ({route, navigation}) {
         //update this field of data[i]
         //data[i].Aircraft_status = Status
        // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w='+stat, requestOptions)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+BuildingName+'&w='+stat, requestOptions)
         .then(response => response.json())
         .then(users => console.log(users))
       }
@@ -84,7 +84,7 @@ function HangarScreen ({route, navigation}) {
         //update this field of data[i]
         //data[i].Aircraft_status = Status
        // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+Location+'&w='+stat, requestOptions)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+BuildingStatus+'&w='+stat, requestOptions)
         .then(response => response.json())
         .then(users => console.log(users))
       }

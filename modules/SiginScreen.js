@@ -66,7 +66,7 @@ function LoginScreen ({navigation}) {
     {
         //the user is viewer
         mode = false
-        navigation.navigate('Map',{itemID: Username, adminViewer: mode,aicraftID: airID,hangarID: hangID})
+        navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aicraftID: airID,hangarID: hangID})
     }
     
     else if(await postData(url2, requestOptions))
@@ -74,7 +74,7 @@ function LoginScreen ({navigation}) {
         //the user is admin
         setWrongCredentials(5)
         mode = true
-        navigation.navigate('Map',{itemID: Username, adminViewer: mode, aircraftID: airID,hangarID: hangID})
+        navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode, aircraftID: airID,hangarID: hangID})
     }
     else{
       setWrongCredentials(wrongCredentials - 1)
@@ -147,7 +147,7 @@ function LoginScreen ({navigation}) {
           editable={lockOut}
           placeholder="Password"
           placeholderTextColor="white"
-          secureTextEntry={true}
+          secureTextEntry={false}
           onChangeText={(Password) => setPassword(Password)}
         />
       </View>

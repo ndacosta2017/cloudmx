@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
-import { StyleSheet, Text, View, ScrollView,TouchableOpacity, Button, TextInput } from 'react-native';
+import React, { useEffect,useLayoutEffect, useState } from 'react';import { StyleSheet, Text, View, ScrollView,TouchableOpacity, Button, TextInput } from 'react-native';
 
 var example = true
 var name = 'bob'
@@ -11,8 +10,7 @@ var location = 'D-4'
 function MapScreen ({route, navigation}) {
 
 
-
-  const { itemID, adminViewer,aircraftID,hangarID} = route.params;
+  const { itemID,itemPass, adminViewer,aircraftID,hangarID} = route.params;
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -30,8 +28,40 @@ function MapScreen ({route, navigation}) {
 
   modo = (adminViewer) ? 'Admin' : 'Viewer'
 
+
+  
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  
+  function reload(){
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username='+itemID+'&password='+itemPass,requestOptions)
+    .then((response) => response.json())
+    .then((json) => setData(json))
+    .catch((error) => console.error(error))
+    .finally(() => setLoading(false));
+
+  }
+
+
+  const requestOptions = {
+    method: 'POST',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' }
+}
+
+useEffect(() => {
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username='+itemID+'&password='+itemPass,requestOptions)
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
+
+
   //var ritemID = itemID
   // onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})}
+
+  //{itemID}. {data[0].userFirstName}
 
   return (
   
@@ -39,7 +69,7 @@ function MapScreen ({route, navigation}) {
 
 <View style={styles.main}>
   <Text style={styles.topText}>
-    Hello, User {itemID}.
+    Hello, user {(adminViewer) ? itemID  : data[0].userFirstName +' '+ data[0].userLastName } 
   </Text>
   <Text style={styles.topText}>
     You are in {modo} Mode
@@ -50,14 +80,14 @@ function MapScreen ({route, navigation}) {
   </Text>
 </View>
 
-<ScrollView style={{flex: 1,}}>
+<ScrollView style={styles.overall}>
 
  <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
-   <Text style={styles.titleText}>Hangar 731 {JSON.stringify(aircraftID)}</Text>
+   <Text style={styles.titleText}>Hangar 731 </Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer,aircraftID,hangarID:0})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -79,7 +109,7 @@ function MapScreen ({route, navigation}) {
    <Text style={styles.titleText}>Hangar 746</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:0})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -95,6 +125,95 @@ function MapScreen ({route, navigation}) {
    </View>
   </View>
  </View>
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Offices</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View Hangar Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View All Aircraft
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Equipment Bay</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View Hangar Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View All Aircraft
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Maintenance Bay</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View Hangar Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View All Aircraft
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Fire Department</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View Hangar Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          View All Aircraft
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
 
  <View style={styles.runway}>
  <View style={styles.textRun}>
@@ -273,7 +392,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   titleText: {
-    fontSize: 40,
+    fontSize: 35,
+    color: 'white'
   },
 
   forgot_button: {
@@ -331,7 +451,7 @@ const styles = StyleSheet.create({
   runway : {
     flex: .5,
     justifyContent: 'center',
-    backgroundColor: '#D2AF39', 
+    backgroundColor: '#b31942', 
     height: 800,
     borderRadius: 40,
     margin: 30
