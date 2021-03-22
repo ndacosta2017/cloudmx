@@ -10,10 +10,11 @@ function HangarScreen ({route, navigation}) {
     React.useLayoutEffect(() => {
       navigation.setOptions({
         headerRight: () => (
-          <TouchableOpacity style={{}} 
+        <TouchableOpacity style={{}} 
           onPress = {() =>  navigation.navigate('Sign-in') } >
-          <Text style={styles.rightHead} 
-          >Log Out</Text>
+          <Text style={styles.rightHead}>
+            Log Out
+          </Text>
         </TouchableOpacity>
         ),
       });
@@ -107,8 +108,9 @@ function HangarScreen ({route, navigation}) {
       <View style = {styles.overall}>
   
         <View style={styles.info}>
+        <View style={styles.display}>
         <Text style={styles.inputText}>
-              Hangar Identification: 
+              Building Identification: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
@@ -119,12 +121,13 @@ function HangarScreen ({route, navigation}) {
               {addSerial(data[i].serial_No)}
             </Text>
             )}
-       
+         </View>
         </View>
   
         <View style={styles.info}>
+        <View style={styles.display}>
         <Text style={styles.inputText}>
-              Hangar Status: 
+              Building Status: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
@@ -134,34 +137,43 @@ function HangarScreen ({route, navigation}) {
               {data[i].building_status}
             </Text>
             )}
+          </View>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
         </TextInput>
         </View>
   
         <View style={styles.info}>
+        <View style={styles.display}>
           <Text style={styles.inputText}>Number of Aircraft: </Text>
+        </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
         </View>
   
         <View style={styles.info}>
+        <View style={styles.display}>
           <Text style={styles.inputText}>Aircraft Under Maintenance: </Text>
+        </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
         </View>
   
         <View style={styles.info}>
+        <View style={styles.display}>
           <Text style={styles.inputText}>Latest Inspection Date </Text>
+        </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
         </View>
   
         <View style={styles.info}>
+        <View style={styles.display}>
           <Text style={styles.inputText}>Lead Maintainer: </Text>
+        </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
@@ -303,6 +315,11 @@ function HangarScreen ({route, navigation}) {
     infoField:{
       flex: 0.8,
       fontSize: 30
+    },
+    display:{
+      flexDirection: 'row',
+      alignItems: "center",
+      justifyContent: "center",
     },
     input : {
       width: 200,

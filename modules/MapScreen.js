@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
-import React, { useEffect,useLayoutEffect, useState } from 'react';import { StyleSheet, Text, View, ScrollView,TouchableOpacity, Button, TextInput } from 'react-native';
+import React, { useEffect,useLayoutEffect, useState } from 'react';
+import { StyleSheet, Text, View, ScrollView,ActivityIndicator,TouchableOpacity, Button, TextInput } from 'react-native';
 
 var example = true
 var name = 'bob'
@@ -57,20 +58,28 @@ useEffect(() => {
       .finally(() => setLoading(false));
   }, []);
 
+ //var here = data[0].userFirstName
 
   //var ritemID = itemID
   // onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})}
 
   //{itemID}. {data[0].userFirstName}
+  // data[0].userFirstName +' '+ data[0].userLastName
+  //Hello, user {(adminViewer) ? itemID  :  data[0].userFirstName +' '+ data[0].userLastName } 
 
   return (
   
 <View style={styles.overall}>
 
 <View style={styles.main}>
-  <Text style={styles.topText}>
-    Hello, user {(adminViewer) ? itemID  : data[0].userFirstName +' '+ data[0].userLastName } 
-  </Text>
+  <View style={styles.topText}>
+  {isLoading ? <ActivityIndicator/> : (
+     <Text style={styles.inputText}>
+        Hello, user {(adminViewer) ? itemID  : 
+        data[0].userFirstName +' '+ data[0].userLastName } 
+      </Text>
+    )}
+  </View>
   <Text style={styles.topText}>
     You are in {modo} Mode
   </Text>
@@ -82,12 +91,36 @@ useEffect(() => {
 
 <ScrollView style={styles.overall}>
 
+<View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Add New Users</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          Add A New Admin User
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+        <Text style={{color: 'white'}}>
+          Add A New Viewer User
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
  <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
    <Text style={styles.titleText}>Hangar 731 </Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID:0,adminViewer,aircraftID,hangarID:0})} >
+        onPress={ (adminViewer) ? 
+          () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
+          () => alert('You are not an Administrator. You can not new add users') }>
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -95,7 +128,9 @@ useEffect(() => {
    </View>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+         onPress={ (adminViewer) ? 
+          () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
+          () => alert('You are not an Administrator. You can not add new users') } >
         <Text style={{color: 'white'}}>
           View All Aircraft
         </Text>
@@ -305,6 +340,11 @@ useEffect(() => {
    </View>
   </View>
  </View>
+
+
+
+
+
 </ScrollView>
   
 </View>
@@ -315,7 +355,8 @@ useEffect(() => {
 const styles = StyleSheet.create({
   overall: {
     flex: 1,
-    backgroundColor:'#0a3161'
+    backgroundColor:'#0a3161',
+    
   },
   main:{
     flex: 0.2, 
@@ -408,7 +449,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     width: 170, 
     height: 50,
-    backgroundColor: 'blue'
+    backgroundColor: '#0a3161'
   },
   hangarInfo: {
     justifyContent: 'center',
@@ -462,7 +503,7 @@ const styles = StyleSheet.create({
     borderRadius: 20, 
     width: 70, 
     height: 70, 
-    backgroundColor: example ? 'blue' : 'black'
+    backgroundColor: '#0a3161'
 
   },
   input : {

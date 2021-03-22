@@ -37,7 +37,8 @@ function App(navigation) {
       
       <Stack.Screen name="Map" component={MapScreen} />
 
-      <Stack.Screen name="Hangar" component={HangarScreen} />
+      <Stack.Screen name="Hangar" component={HangarScreen} 
+         options={{title: 'Building'}}/>
       
       <Stack.Screen name="Air" component={AirCraftScreen}  
          options={{title: 'Aircraft'}} />
