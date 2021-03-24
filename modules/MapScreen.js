@@ -96,7 +96,9 @@ useEffect(() => {
    <Text style={styles.titleText}>Add New Users</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+       onPress={ (adminViewer) ? 
+        () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
+        () => alert('You are not an Administrator. You can not new add users') } >
         <Text style={{color: 'white'}}>
           Add A New Admin User
         </Text>
@@ -104,7 +106,9 @@ useEffect(() => {
    </View>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={ (adminViewer) ? 
+          () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
+          () => alert('You are not an Administrator. You can not new add users') } >
         <Text style={{color: 'white'}}>
           Add A New Viewer User
         </Text>
@@ -118,21 +122,9 @@ useEffect(() => {
    <Text style={styles.titleText}>Hangar 731 </Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={ (adminViewer) ? 
-          () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
-          () => alert('You are not an Administrator. You can not new add users') }>
+       onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})}>
         <Text style={{color: 'white'}}>
           View Hangar Info
-        </Text>
-      </TouchableOpacity>
-   </View>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-         onPress={ (adminViewer) ? 
-          () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
-          () => alert('You are not an Administrator. You can not add new users') } >
-        <Text style={{color: 'white'}}>
-          View All Aircraft
         </Text>
       </TouchableOpacity>
    </View>
@@ -150,14 +142,7 @@ useEffect(() => {
         </Text>
       </TouchableOpacity>
    </View>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
-        <Text style={{color: 'white'}}>
-          View All Aircraft
-        </Text>
-      </TouchableOpacity>
-   </View>
+   
   </View>
  </View>
 
@@ -169,14 +154,6 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
-        </Text>
-      </TouchableOpacity>
-   </View>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
-        <Text style={{color: 'white'}}>
-          View All Aircraft
         </Text>
       </TouchableOpacity>
    </View>
@@ -194,14 +171,6 @@ useEffect(() => {
         </Text>
       </TouchableOpacity>
    </View>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
-        <Text style={{color: 'white'}}>
-          View All Aircraft
-        </Text>
-      </TouchableOpacity>
-   </View>
   </View>
  </View>
 
@@ -216,14 +185,6 @@ useEffect(() => {
         </Text>
       </TouchableOpacity>
    </View>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
-        <Text style={{color: 'white'}}>
-          View All Aircraft
-        </Text>
-      </TouchableOpacity>
-   </View>
   </View>
  </View>
 
@@ -235,14 +196,6 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
-        </Text>
-      </TouchableOpacity>
-   </View>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID})} >
-        <Text style={{color: 'white'}}>
-          View All Aircraft
         </Text>
       </TouchableOpacity>
    </View>
