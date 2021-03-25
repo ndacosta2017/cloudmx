@@ -97,7 +97,7 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
        onPress={ (adminViewer) ? 
-        () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
+        () => navigation.navigate('AddAdmin',{itemID,adminViewer}) : 
         () => alert('You are not an Administrator. You can not new add users') } >
         <Text style={{color: 'white'}}>
           Add A New Admin User
@@ -107,7 +107,7 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={ (adminViewer) ? 
-          () => navigation.navigate('All',{itemID,adminViewer,aircraftID,hangarID}) : 
+          () => navigation.navigate('AddUser',{itemID,adminViewer}) : 
           () => alert('You are not an Administrator. You can not new add users') } >
         <Text style={{color: 'white'}}>
           Add A New Viewer User
