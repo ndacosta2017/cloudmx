@@ -10,7 +10,7 @@ import HangarScreen from './modules/HangarScreen';
 import MaintenanceHistoryScreen from './modules/MaintenanceScreen';
 import AllAircraftScreen from './modules/AllAircrafts'
 import PassWordScreen from './modules/PassWordRecovery'
-import AddUserScreen from './modules/AddUser'
+import AddUserScreen from './modules/AddUsers'
 import AddAdminScreen from './modules/AddAdmin'
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
