@@ -36,7 +36,7 @@ function LoginScreen ({navigation}) {
 
   const [lockOut,setLockOut] = useState(true)
 
-  const [wrongCredentials,setWrongCredentials] = useState(10)
+  const [wrongCredentials,setWrongCredentials] = useState(5)
 
   useEffect(() => {
     setUsername('')
@@ -48,13 +48,12 @@ function LoginScreen ({navigation}) {
 
   async function check(navigation){
 
-   //if ((wrongCredentials == 0) || (lockOut == false)){
-   
-    //setLockOut(false)
-     // alert('You have been locked out of the app for repeated failed login attempts. Please alert an admin for assistance or click the link above if you have forgotten your password.')
-   // }
+    if ((wrongCredentials == 0) || (lockOut == false)){
+      setLockOut(false)
+      alert('You have been locked out of the app for repeated failed login attempts. Please alert an admin for assistance or click the link above if you have forgotten your password.')
+    }
 
-   if (wrongCredentials > 0){
+    if (wrongCredentials > 0){
 
     var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username="+Username+"&password="+Password
     var url2 = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin?username="+Username+"&password="+Password
@@ -63,7 +62,6 @@ function LoginScreen ({navigation}) {
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' }
     }
-
     if(await postData(url, requestOptions))
     {
         //the user is viewer
@@ -71,7 +69,7 @@ function LoginScreen ({navigation}) {
         navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aicraftID: airID,hangarID: hangID})
     }
     
-    if(await postData(url2, requestOptions))
+    else if(await postData(url2, requestOptions))
     {
         //the user is admin
         setWrongCredentials(5)
@@ -86,6 +84,7 @@ function LoginScreen ({navigation}) {
       if (wrongCredentials ==1){
         alert('Wrong Username and/or Password. You have '+wrongCredentials+' more try.')
       }
+  
     }
              //
     }
@@ -155,7 +154,6 @@ function LoginScreen ({navigation}) {
 
       <TouchableOpacity>
         <Text style={styles.forgot_button} 
-        
         onPress = {() =>  navigation.navigate('Password') } 
         >Forgot Password?</Text>
       </TouchableOpacity>
