@@ -77,7 +77,7 @@ function LoginScreen ({navigation}) {
         //the user is admin
         setWrongCredentials(5)
         mode = true
-        navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode, aircraftID: airID,hangarID: hangID})
+        navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aircraftID: airID,hangarID: hangID})
     }
     else{
       setWrongCredentials(wrongCredentials - 1)
