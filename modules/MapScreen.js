@@ -29,13 +29,16 @@ function MapScreen ({route, navigation}) {
 
   modo = (adminViewer) ? 'Admin' : 'Viewer'
 
-
+  var json = {};
+  json[0] = [];
+  json.user = itemID;
+  json.pass = itemPass;
   
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   
   function reload(){
-    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username='+itemID+'&password='+itemPass,requestOptions)
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users',requestOptions)
     .then((response) => response.json())
     .then((json) => setData(json))
     .catch((error) => console.error(error))
@@ -47,11 +50,12 @@ function MapScreen ({route, navigation}) {
   const requestOptions = {
     method: 'POST',
     mode: 'cors',
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(json)
 }
 
 useEffect(() => {
-    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username='+itemID+'&password='+itemPass,requestOptions)
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users',requestOptions)
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error))
