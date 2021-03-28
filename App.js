@@ -10,6 +10,8 @@ import HangarScreen from './modules/HangarScreen';
 import MaintenanceHistoryScreen from './modules/MaintenanceScreen';
 import AllAircraftScreen from './modules/AllAircrafts'
 import PassWordScreen from './modules/PassWordRecovery'
+import AddUserScreen from './modules/AddUser'
+import AddAdminScreen from './modules/AddAdmin'
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
@@ -36,6 +38,12 @@ function App(navigation) {
       options={{title: 'Password Recovery'}}/>
       
       <Stack.Screen name="Map" component={MapScreen} />
+
+      <Stack.Screen name="AddUser" component={AddUserScreen} 
+         options={{title: 'Add User'}}/>
+      
+      <Stack.Screen name="AddAdmin" component={AddAdminScreen} 
+         options={{title: 'Add Admin'}}/>
 
       <Stack.Screen name="Hangar" component={HangarScreen} 
          options={{title: 'Building'}}/>
