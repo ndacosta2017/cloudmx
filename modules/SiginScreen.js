@@ -84,8 +84,7 @@ function LoginScreen ({navigation}) {
       if (wrongCredentials ==1){
         alert('Wrong Username and/or Password. You have '+wrongCredentials+' more try.')
       }
-  
-    }
+     }
              //
     }
   }
