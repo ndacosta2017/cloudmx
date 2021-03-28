@@ -47,20 +47,23 @@ function LoginScreen ({navigation}) {
   //const [login, setLogin] = useState(false);
 
   async function check(navigation){
-
+    var data = {};
+    data[0] = [];
+    data.user = Username;
+    data.pass = Password;
     if ((wrongCredentials == 0) || (lockOut == false)){
       setLockOut(false)
       alert('You have been locked out of the app for repeated failed login attempts. Please alert an admin for assistance or click the link above if you have forgotten your password.')
     }
 
     if (wrongCredentials > 0){
-
-    var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users?username="+Username+"&password="+Password
-    var url2 = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin?username="+Username+"&password="+Password
+    var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users"
+    var url2 = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin"
     const requestOptions = {
         method: 'POST',
         mode: 'cors',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
     }
     if(await postData(url, requestOptions))
     {
@@ -96,6 +99,7 @@ function LoginScreen ({navigation}) {
      var test = fetch(url, requestOptions)
       .then(response => response.json())
       .then(users => {
+        console.log(users)
         if(users.length > 0) 
         {
             return true
