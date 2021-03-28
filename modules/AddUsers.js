@@ -3,7 +3,7 @@ import * as React from 'react';
 import {  useEffect,useLayoutEffect, useState } from 'react';
 import { StyleSheet, TextInput,ActivityIndicator,Text,TouchableOpacity, View } from 'react-native';
 
-function AddAdminScreen ({route, navigation}) {
+function AddUserScreen ({route, navigation}) {
 
     const {itemID, adminViewer} = route.params;
 
@@ -20,11 +20,10 @@ function AddAdminScreen ({route, navigation}) {
       });
     }, [navigation]);
 
-  var place = ' Update Data'
-  var bcrypt = require('bcryptjs');
+   var bcrypt = require('bcryptjs');
   const saltRounds = 10;
-  const [Username, setUsername] = useState('Username');
-  var check = '';
+   const [Username, setUsername] = useState('Username');
+
   function userNameFunc(Username){
     setUsername(Username);
 
@@ -36,9 +35,17 @@ function AddAdminScreen ({route, navigation}) {
     setPassword(Password);
 
   }
+
+
+    var place = ' Update Data'
+
+    const requestOptions = {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' }
+  }
   
 
- 
     function send(){
       if (Username.length > 0 && Password.length > 0){
         //update this field of data[i]
@@ -49,7 +56,7 @@ function AddAdminScreen ({route, navigation}) {
         json[0] = [];
         json.user = Username;
         json.pass = hash;
-        var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin/create"
+        var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users/create"
         const requestOptions = 
         {
             method: 'POST',
@@ -80,7 +87,7 @@ function AddAdminScreen ({route, navigation}) {
         <View style={styles.info}>
         <View style={styles.display}>
         <Text style={styles.inputText}>
-              Add Admin Name: 
+              Add User Name: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
@@ -93,10 +100,10 @@ function AddAdminScreen ({route, navigation}) {
   
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add Temporary Admin Password: </Text>
+          <Text style={styles.inputText}>Add Temporary Password: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer} onChangeText={(Password) => setPassword(Password)}> 
+            editable={adminViewer} onChangeText={(Password) => setPassword(Password)}>  
           </TextInput>
         </View>
 
@@ -267,4 +274,4 @@ function AddAdminScreen ({route, navigation}) {
     
   })
 
-export default AddAdminScreen;
+export default AddUserScreen;
