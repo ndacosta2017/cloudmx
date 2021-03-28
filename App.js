@@ -29,6 +29,7 @@ function App(navigation) {
         },
       }}
       >
+
       <Stack.Screen name="Sign-in" component={SiginScreen} />
 
       <Stack.Screen name="Password" component={PassWordScreen} 
