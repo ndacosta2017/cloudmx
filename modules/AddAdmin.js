@@ -20,9 +20,6 @@ function AddAdminScreen ({route, navigation}) {
       });
     }, [navigation]);
 
-  var place = ' Update Data'
-  var bcrypt = require('bcryptjs');
-  const saltRounds = 10;
   const [Username, setUsername] = useState('Username');
   var check = '';
   function userNameFunc(Username){
@@ -37,18 +34,16 @@ function AddAdminScreen ({route, navigation}) {
 
   }
   
-
+var place = ' Update Data'
  
-    function send(){
+     function send(){
       if (Username.length > 0 && Password.length > 0){
         //update this field of data[i]
         console.log('User:', Username)
-        bcrypt.hash(Password, saltRounds, function(err, hash) {
-        console.log(hash)
         var json = {};
         json[0] = [];
         json.user = Username;
-        json.pass = hash;
+        json.pass = Password;
         var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin/create"
         const requestOptions = 
         {
@@ -58,10 +53,9 @@ function AddAdminScreen ({route, navigation}) {
             body: JSON.stringify(json)
         }
         fetch(url, requestOptions)
-        });
         console.log('Pass:', Password)
-      }
     }
+     }
   
    // console.log('\ndata: ',data)
 
