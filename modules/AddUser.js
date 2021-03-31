@@ -20,26 +20,24 @@ function AddUserScreen ({route, navigation}) {
       });
     }, [navigation]);
 
-    //const [HangarID, setHangarID] = useState(HangarID);
+   var bcrypt = require('bcryptjs');
+  const saltRounds = 10;
+   const [Username, setUsername] = useState('Username');
 
-    function userHangar(HangarID){
-      setUsername(HangarID);
-  
-    }
+  function userNameFunc(Username){
+    setUsername(Username);
+
+  }
+
+  const [Password, setPassword] = useState('Password');
+
+  function passWordFunc(Password){
+    setPassword(Password);
+
+  }
+
 
     var place = ' Update Data'
-
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
-
-    function reload(){
-      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar',requestOptions)
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  
-    }
 
     const requestOptions = {
       method: 'POST',
@@ -47,50 +45,26 @@ function AddUserScreen ({route, navigation}) {
       headers: { 'Content-Type': 'application/json' }
   }
   
-  useEffect(() => {
-      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar',requestOptions)
-        .then((response) => response.json())
-        .then((json) => setData(json))
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
-    }, []);
 
-    const [Status, setStatus] = useState('');
-
-    var stat = ''
-
-    const [BuildingName, setBuildingName] = useState('');
-    const [BuildingStatus, setBuildingStatus] = useState('');
-
-    function addSerial(num){
-      stat = num
-    }
-
-
-    function serial_func(Serial){
-      setSerial(Serial);
-  
-    }
-
-    function send(i){
-      if (BuildingName.length > 0){
+    function send(){
+      if (Username.length > 0 && Password.length > 0){
         //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+BuildingName+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
+        console.log('User:', Username)
+        var json = {};
+        json[0] = [];
+        json.user = Username;
+        json.pass = Password;
+        var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users/create"
+        const requestOptions = 
+        {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(json)
+        }
+        fetch(url, requestOptions)
+        console.log('Pass:', Password)
       }
-      if (BuildingStatus.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+BuildingStatus+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-
-      reload()
     }
   
    // console.log('\ndata: ',data)
@@ -115,14 +89,9 @@ function AddUserScreen ({route, navigation}) {
             <Text style={styles.inputText}>
               {empty}
             </Text>
-            {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              
-            </Text>
-            )}
           </View>
         <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
+            editable={adminViewer} onChangeText={(Username) => setUsername(Username)}> 
         </TextInput>
         </View>
   
@@ -131,14 +100,14 @@ function AddUserScreen ({route, navigation}) {
           <Text style={styles.inputText}>Add Temporary Password: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(Password) => setPassword(Password)}>  
           </TextInput>
         </View>
 
         <View style={styles.info}>
          <View style={styles.basicRow}>
           <Text style={styles.history} onPress={(adminViewer) ? 
-            () => alert('You are an Administrator. You can update data') : 
+            () => send() : 
             () => alert('You are not an Administrator. You can not update data') }>
              Update
           </Text>
