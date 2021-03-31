@@ -14,6 +14,7 @@ import AddUserScreen from './modules/AddUsers'
 import AddAdminScreen from './modules/AddAdmin'
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
+
 const Stack = createStackNavigator();
 
 function App(navigation) {
