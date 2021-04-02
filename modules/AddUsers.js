@@ -95,10 +95,28 @@ function AddUserScreen ({route, navigation}) {
   
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add Temporary Password: </Text>
+          <Text style={styles.inputText}>Add User Password: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(Password) => setPassword(Password)}>  
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+          <Text style={styles.inputText}>Add User's First Name </Text>
+        </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}>  
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+          <Text style={styles.inputText}>Add User's Last Name </Text>
+        </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}>  
           </TextInput>
         </View>
 
