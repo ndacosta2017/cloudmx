@@ -20,8 +20,6 @@ function AddUserScreen ({route, navigation}) {
       });
     }, [navigation]);
 
-   var bcrypt = require('bcryptjs');
-  const saltRounds = 10;
    const [Username, setUsername] = useState('Username');
 
   function userNameFunc(Username){

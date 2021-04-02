@@ -21,8 +21,6 @@ function AddAdminScreen ({route, navigation}) {
     }, [navigation]);
 
   var place = ' Update Data'
-  var bcrypt = require('bcryptjs');
-  const saltRounds = 10;
   const [Username, setUsername] = useState('Username');
   var check = '';
   function userNameFunc(Username){
