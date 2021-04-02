@@ -88,10 +88,37 @@ function AddAdminScreen ({route, navigation}) {
   
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add Temporary Admin Password: </Text>
+          <Text style={styles.inputText}>Add Admin Password: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(Password) => setPassword(Password)}> 
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+          <Text style={styles.inputText}>Add Admin Password: </Text>
+        </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer} onChangeText={(Password) => setPassword(Password)}> 
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+          <Text style={styles.inputText}>Add Admin's First name: </Text>
+        </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+          <Text style={styles.inputText}>Add Admin's Last name: </Text>
+        </View>
+          <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
           </TextInput>
         </View>
 
