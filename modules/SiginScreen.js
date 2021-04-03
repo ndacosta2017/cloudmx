@@ -147,7 +147,7 @@ function LoginScreen ({navigation}) {
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
-          value={''}
+          value={Username}
           style={styles.TextInput}
           editable={lockOut}
           placeholder="Username"
@@ -158,7 +158,7 @@ function LoginScreen ({navigation}) {
 
       <View style={styles.inputView}>
         <TextInput
-          value={''}
+          value={Password}
           style={styles.TextInput}
           editable={lockOut}
           placeholder="Password"
