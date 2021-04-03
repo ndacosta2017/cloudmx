@@ -8,7 +8,7 @@ function HangarScreen ({route, navigation}) {
     const {itemID, adminViewer,aircraftID,hangarID} = route.params;
 
     React.useLayoutEffect(() => {
-      navigation.setOptions({
+      navigation.setOptions({title: 'Building'},{
         headerRight: () => (
         <TouchableOpacity style={{}} 
           onPress = {() =>  navigation.navigate('Sign-in') } >
@@ -186,7 +186,7 @@ function HangarScreen ({route, navigation}) {
              Maintenance History
           </Text>
           <Text style={styles.history} onPress={(adminViewer) ? 
-            () => alert('You are an Administrator. You can update data') : 
+            () => console.log('You are an Administrator. You can update data') : 
             () => alert('You are not an Administrator. You can not update data') }>
              Update
           </Text>
