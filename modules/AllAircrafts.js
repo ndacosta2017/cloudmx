@@ -111,10 +111,8 @@ function AllAircraftScreen ({route, navigation}) {
   
           <View style={styles.info}>
             <Text style={styles.inputText}>Aircraft Serial #:</Text>
-            <TextInput style={styles.infoField} placeholder={place}
-                editable={adminViewer}> 
-            </TextInput>
-            <View style={{flex:1, justifyContent:'center',marginRight:25}}>
+           
+            <View style={{flex:1, justifyContent:'center',marginLeft:50}}>
              <FlatList
               data={DATA}
               renderItem={renderItem}
