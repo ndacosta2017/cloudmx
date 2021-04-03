@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
-import { StyleSheet, Text,TextInput, View,Button,TouchableOpacity, FlatList } from 'react-native';
+import React, { useEffect,useLayoutEffect, useState } from 'react';
+import { StyleSheet, Text,TextInput,ActivityIndicator, View,Button,TouchableOpacity, FlatList } from 'react-native';
 
 function AllAircraftScreen ({route, navigation}) {
 
@@ -19,6 +19,39 @@ function AllAircraftScreen ({route, navigation}) {
           ),
         });
       }, [navigation]);
+
+
+      const [isLoading, setLoading] = useState(true);
+      const [data, setData] = useState([]);
+      
+      function reload(){
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    
+      }
+  
+  
+      const requestOptions = {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' }
+    }
+    
+    useEffect(() => {
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
+          .then((response) => response.json())
+          .then((json) => setData(json))
+          .catch((error) => console.error(error))
+          .finally(() => setLoading(false));
+      }, []);
+  
+      //const Serial = data[i].serial_No
+      //console.log(data)
+  
+      var stat = ''
     
         const DATA = [
           {
@@ -29,6 +62,7 @@ function AllAircraftScreen ({route, navigation}) {
             id: '1',
             title: 'Aircraft2',
           },
+          /*
           {
             id: '2',
             title: 'Aircraft3',
@@ -48,16 +82,19 @@ function AllAircraftScreen ({route, navigation}) {
           {
             id: '6',
             title: 'Aircraft7',
-          },
+          },*/
           
         ];
     
     
         const Item = ({ title }) => (
           <View style={styles.item}>
+            {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText} onPress={() => 
-              navigation.navigate('Air',{itemID, adminViewer,aircraftID: title,hangarID})}>Aircraft {title}
+              navigation.navigate('Air',{itemID, adminViewer,aircraftID: title,hangarID})}>
+                Aircraft {title} :   {data[title].serial_No}
             </Text>
+            )}
           </View>
         );
     
@@ -77,7 +114,7 @@ function AllAircraftScreen ({route, navigation}) {
             <TextInput style={styles.infoField} placeholder={place}
                 editable={adminViewer}> 
             </TextInput>
-            <View style={{flex:1}}>
+            <View style={{flex:1, justifyContent:'center',marginRight:25}}>
              <FlatList
               data={DATA}
               renderItem={renderItem}

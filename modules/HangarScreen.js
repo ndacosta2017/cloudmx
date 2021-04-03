@@ -72,20 +72,20 @@ function HangarScreen ({route, navigation}) {
   
     }
 
-    function send(i){
+    function send(i){/*
       if (BuildingName.length > 0){
         //update this field of data[i]
         //data[i].Aircraft_status = Status
        // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+BuildingName+'&w='+stat, requestOptions)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar/update?status='+BuildingName+'&w='+stat, requestOptions)
         .then(response => response.json())
         .then(users => console.log(users))
-      }
+      }*/
       if (BuildingStatus.length > 0){
         //update this field of data[i]
         //data[i].Aircraft_status = Status
        // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+BuildingStatus+'&w='+stat, requestOptions)
+        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar/update?status='+BuildingStatus+'&w='+stat, requestOptions)
         .then(response => response.json())
         .then(users => console.log(users))
       }
@@ -118,7 +118,7 @@ function HangarScreen ({route, navigation}) {
             {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
               {data[i].building_Name}
-              {addSerial(data[i].serial_No)}
+              {addSerial(data[i].building_Name)}
             </Text>
             )}
          </View>
@@ -186,7 +186,7 @@ function HangarScreen ({route, navigation}) {
              Maintenance History
           </Text>
           <Text style={styles.history} onPress={(adminViewer) ? 
-            () => console.log('You are an Administrator. You can update data') : 
+            () =>  {send(i)}: 
             () => alert('You are not an Administrator. You can not update data') }>
              Update
           </Text>

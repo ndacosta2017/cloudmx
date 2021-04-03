@@ -44,6 +44,11 @@ function LoginScreen ({navigation}) {
 
   }, []);
 
+  const empty = () => {
+    setUsername('Username')
+    setPassword('Password')
+  }
+
   //const [login, setLogin] = useState(false);
 
   async function check(navigation){
@@ -68,6 +73,9 @@ function LoginScreen ({navigation}) {
     if(await postData(url, requestOptions))
     {
         //the user is viewer
+        setWrongCredentials(5)
+        setUsername('Username')
+        setPassword('Password')
         mode = false
         navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aicraftID: airID,hangarID: hangID})
     }
@@ -76,6 +84,8 @@ function LoginScreen ({navigation}) {
     {
         //the user is admin
         setWrongCredentials(5)
+        setUsername('Username')
+        setPassword('Password')
         mode = true
         navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aircraftID: airID,hangarID: hangID})
     }
@@ -90,6 +100,7 @@ function LoginScreen ({navigation}) {
      }
              //
     }
+
   }
     
   // Example POST method implementation:
@@ -136,6 +147,7 @@ function LoginScreen ({navigation}) {
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
+          value={''}
           style={styles.TextInput}
           editable={lockOut}
           placeholder="Username"
@@ -146,6 +158,7 @@ function LoginScreen ({navigation}) {
 
       <View style={styles.inputView}>
         <TextInput
+          value={''}
           style={styles.TextInput}
           editable={lockOut}
           placeholder="Password"
@@ -157,8 +170,9 @@ function LoginScreen ({navigation}) {
 
       <TouchableOpacity>
         <Text style={styles.forgot_button} 
-        onPress = {() =>  navigation.navigate('Password') } 
-        >Forgot Password?</Text>
+        onPress = {() =>  navigation.navigate('Password') } >
+          Forgot Password?
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.loginBtn}
