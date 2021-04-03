@@ -108,7 +108,14 @@ function AirCraftScreen ({route, navigation}) {
     const [ETIC_H, setETIC] = useState('');
 
     const erase =()=> {
+      setStatus('')
+      setLocation('')
       setRemarks('')
+      setSortie('')
+      setMaintenance('')
+      setMICAPS('')
+      setLastFlight('')
+      setETIC('')
     }
 
     const requestOptions = 
@@ -240,7 +247,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={Status}
             editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
           </TextInput>
         </View>
@@ -261,7 +268,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={Location}
             editable={adminViewer} onChangeText={(Location) => setLocation(Location)}> 
           </TextInput>
         </View>
@@ -299,7 +306,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={Sortie}
             editable={adminViewer} onChangeText={(Sortie) => setSortie(Sortie)}> 
           </TextInput>
         </View>
@@ -318,7 +325,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={Maintenance_H}
             editable={adminViewer} onChangeText={(Maintenance_H) => setMaintenance(Maintenance_H)}> 
           </TextInput>
         </View>
@@ -337,7 +344,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={Micaps_H}
             editable={adminViewer} onChangeText={(Micaps_H) => setMICAPS(Micaps_H)}> 
           </TextInput>
         </View>
@@ -356,7 +363,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={LASTFLIGHT}
             editable={adminViewer} onChangeText={(LASTFLIGHT) => setLastFlight(LASTFLIGHT)}> 
           </TextInput>
         </View>
@@ -375,7 +382,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={ETIC_H}
             editable={adminViewer} onChangeText={(ETIC_H) => setETIC(ETIC_H)}> 
           </TextInput>
         </View>
