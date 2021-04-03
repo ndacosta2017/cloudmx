@@ -133,15 +133,15 @@ function AirCraftScreen ({route, navigation}) {
     async function send(i){
     var json = {};
         json[0] = [];
-        json.sortie = Sortie;
-        json.last_flt = LASTFLIGHT;
-        json.team = Maintenance_H;
-        json.w = stat;
-        json.status = Status;
-        json.etic = ETIC_H;
-        json.location = Location;
-        json.micaps = Micaps_H;
-        json.remark = Remarks;
+        json.sortie = Sortie.trim();
+        json.last_flt = LASTFLIGHT.trim();
+        json.team = Maintenance_H.trim();
+        json.w = stat.trim();
+        json.status = Status.trim();
+        json.etic = ETIC_H.trim();
+        json.location = Location.trim();
+        json.micaps = Micaps_H.trim();
+        json.remark = Remarks.trim();
     const sendOptions = 
         {
             method: 'POST',
