@@ -107,6 +107,9 @@ function AirCraftScreen ({route, navigation}) {
     const [LASTFLIGHT, setLastFlight] = useState('');
     const [ETIC_H, setETIC] = useState('');
 
+    const erase =()=> {
+      setRemarks('')
+    }
 
     const requestOptions = 
         {
@@ -141,7 +144,8 @@ function AirCraftScreen ({route, navigation}) {
         }
     await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
     alert("Update Complete")
-     
+
+    erase()
     reload()
     }
   
@@ -276,7 +280,7 @@ console.log('TESTING!!!')
             </Text>
             )}
           </View>
-          <TextInput style={styles.infoField} placeholder={place}
+          <TextInput style={styles.infoField} placeholder={place} value={Remarks}
             editable={adminViewer} onChangeText={(Remarks) => setRemarks(Remarks)}> 
           </TextInput>
         </View>
