@@ -34,17 +34,32 @@ function AddAdminScreen ({route, navigation}) {
     setPassword(Password);
 
   }
+
+  const [FirstName, setFirstName] = useState('FirstName');
+
+  function FirstNameFunc(FirstName){
+    setFirstName(FirstName);
+
+  }
+    
+  const [LastName, setLastName] = useState('LastName');
+
+  function LastNameFunc(LastName){
+    setLastName(LastName);
+
+  }
   
 
- 
-    function send(){
-      if (Username.length > 0 && Password.length > 0){
+ function send(){
+      if (Username.length > 0 && Password.length > 0 && FirstName.length > 0 && LastName.length > 0){
         //update this field of data[i]
         console.log('User:', Username)
         var json = {};
         json[0] = [];
         json.user = Username;
         json.pass = Password;
+        json.first = FirstName;
+        json.last = LastName;
         var url = "https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/admin/create"
         const requestOptions = 
         {
@@ -109,7 +124,7 @@ function AddAdminScreen ({route, navigation}) {
           <Text style={styles.inputText}>Add Admin's First name: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(FirstName) => setFirstName(FirstName)}> 
           </TextInput>
         </View>
 
@@ -118,7 +133,7 @@ function AddAdminScreen ({route, navigation}) {
           <Text style={styles.inputText}>Add Admin's Last name: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
+            editable={adminViewer} onChangeText={(LastName) => setLastName(LastName)}> 
           </TextInput>
         </View>
 
