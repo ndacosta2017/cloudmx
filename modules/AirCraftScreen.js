@@ -82,11 +82,7 @@ function AirCraftScreen ({route, navigation}) {
     }
 
 
-    const requestOptions = {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' }
-  }
+  
   
   useEffect(() => {
       fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft',requestOptions)
@@ -102,7 +98,6 @@ function AirCraftScreen ({route, navigation}) {
     var stat = ''
 
     const [Serial, setSerial] = useState('');
-
     const [Status, setStatus] = useState('');
     const [Location, setLocation] = useState('');
     const [Remarks, setRemarks] = useState('');
@@ -113,78 +108,41 @@ function AirCraftScreen ({route, navigation}) {
     const [ETIC_H, setETIC] = useState('');
 
 
+    const requestOptions = 
+        {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' }
+        }
 
+    
     function addSerial(num){
       stat = num
     }
 
     function send(i){
-      if (Status.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?status='+Status+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (Location.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?location='+Location+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (Remarks.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?remark='+Remarks+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (Sortie.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?sortie='+Sortie+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (Maintenance_H.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?team='+Maintenance_H+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (Micaps_H.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?micaps='+Micaps_H+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (LASTFLIGHT.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?last_flt='+LASTFLIGHT+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
-      if (ETIC_H.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update?etic='+ETIC_H+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
+    var json = {};
+        json[0] = [];
+        json.sortie = Sortie;
+        json.last_flt = LASTFLIGHT;
+        json.team = Maintenance_H;
+        json.w = stat;
+        json.status = Status;
+        json.etic = ETIC_H;
+        json.location = Location;
+        json.micaps = Micaps_H;
+        json.remark = Remarks;
+    const sendOptions = 
+        {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(json)
+        }
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
+    alert("Update Complete")
      
-      reload()
+    reload()
     }
   
     //console.log('\n\nTESTING: ',data)
