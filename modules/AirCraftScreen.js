@@ -120,7 +120,7 @@ function AirCraftScreen ({route, navigation}) {
       stat = num
     }
 
-    function send(i){
+    async function send(i){
     var json = {};
         json[0] = [];
         json.sortie = Sortie;
@@ -139,7 +139,7 @@ function AirCraftScreen ({route, navigation}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(json)
         }
-    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
+    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
     alert("Update Complete")
      
     reload()
