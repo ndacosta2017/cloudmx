@@ -72,23 +72,20 @@ function HangarScreen ({route, navigation}) {
   
     }
 
-    function send(i){/*
-      if (BuildingName.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar/update?status='+BuildingName+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }*/
-      if (BuildingStatus.length > 0){
-        //update this field of data[i]
-        //data[i].Aircraft_status = Status
-       // console.log('STAT:',stat)
-        fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar/update?status='+BuildingStatus+'&w='+stat, requestOptions)
-        .then(response => response.json())
-        .then(users => console.log(users))
-      }
+    async function send(i){
+       var json = {};
+       json[0] = [];
+       json.name = BuildingName;
+       json.last_flt = BuildingStatus;
+    const sendOptions = 
+        {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(json)
+        }
+    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar/update', sendOptions)
+    alert("Update Complete")
 
       reload()
     }
