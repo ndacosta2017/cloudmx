@@ -45,8 +45,8 @@ function LoginScreen ({navigation}) {
   }, []);
 
   const empty = () => {
-    setUsername('Username')
-    setPassword('Password')
+    setUsername('')
+    setPassword('')
   }
 
   //const [login, setLogin] = useState(false);
@@ -74,8 +74,8 @@ function LoginScreen ({navigation}) {
     {
         //the user is viewer
         setWrongCredentials(5)
-        setUsername('Username')
-        setPassword('Password')
+        setUsername('')
+        setPassword('')
         mode = false
         navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aicraftID: airID,hangarID: hangID})
     }
@@ -84,8 +84,8 @@ function LoginScreen ({navigation}) {
     {
         //the user is admin
         setWrongCredentials(5)
-        setUsername('Username')
-        setPassword('Password')
+        setUsername('')
+        setPassword('')
         mode = true
         navigation.navigate('Map',{itemID: Username,itemPass:Password, adminViewer: mode,aircraftID: airID,hangarID: hangID})
     }
@@ -109,7 +109,7 @@ function LoginScreen ({navigation}) {
      var test = fetch(url, requestOptions)
       .then(response => response.json())
       .then(users => {
-        console.log(users)
+       // console.log(users)
         if(users.length > 0) 
         {
             return true

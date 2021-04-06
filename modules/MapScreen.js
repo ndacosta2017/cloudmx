@@ -79,7 +79,8 @@ useEffect(() => {
   <View style={styles.topText}>
   {isLoading ? <ActivityIndicator/> : (
      <Text style={styles.inputText}>
-        Hello, user {(adminViewer) ? itemID  : 
+        Hello, user {(adminViewer) ? 
+        itemID  : 
         data[0].userFirstName +' '+ data[0].userLastName } 
       </Text>
     )}
@@ -126,7 +127,7 @@ useEffect(() => {
    <Text style={styles.titleText}>Hangar 731 </Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-       onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})}>
+       onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:0})}>
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
@@ -140,7 +141,7 @@ useEffect(() => {
    <Text style={styles.titleText}>Hangar 746</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:0})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:1})} >
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>

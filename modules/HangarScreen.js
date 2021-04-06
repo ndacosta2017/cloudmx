@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import {  useEffect,useLayoutEffect, useState } from 'react';
-import { StyleSheet, TextInput,ActivityIndicator,Text,TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TextInput,KeyboardAvoidingView,ActivityIndicator,Text,TouchableOpacity, View } from 'react-native';
 
 function HangarScreen ({route, navigation}) {
 
@@ -102,7 +102,8 @@ function HangarScreen ({route, navigation}) {
 
     return (
     
-      <View style = {styles.overall}>
+      <View style = {styles.overall} 
+      >
   
         <View style={styles.info}>
         <View style={styles.display}>
