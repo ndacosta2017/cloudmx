@@ -75,8 +75,8 @@ function HangarScreen ({route, navigation}) {
     async function send(i){
        var json = {};
        json[0] = [];
-       json.name = BuildingName;
-       json.last_flt = BuildingStatus;
+       json.name = data[i].building_Name;
+       json.status = BuildingStatus;
     const sendOptions = 
         {
             method: 'POST',
