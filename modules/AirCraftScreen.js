@@ -161,7 +161,7 @@ function AirCraftScreen ({route, navigation}) {
     var status = 'hwllo'
 
     
-
+    
     var empty = ' '
 
     const air = ['hello ','world']
@@ -390,7 +390,7 @@ console.log('TESTING!!!')
         <View style={styles.info}>
          <View style={styles.basicRow}>
           <Text style={styles.history} onPress={() => 
-           navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID})}>
+           navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID,maintenanceID:stat})}>
              Maintenance History
           </Text>
           <Text style={styles.history} onPress={ (adminViewer) ? 

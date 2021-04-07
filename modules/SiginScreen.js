@@ -163,7 +163,7 @@ function LoginScreen ({navigation}) {
           editable={lockOut}
           placeholder="Password"
           placeholderTextColor="white"
-          secureTextEntry={false}
+          secureTextEntry={true}
           onChangeText={(Password) => setPassword(Password)}
         />
       </View>

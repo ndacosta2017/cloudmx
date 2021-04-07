@@ -1,21 +1,22 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
-import { StyleSheet, Text,TextInput, View,Button,TouchableOpacity, FlatList } from 'react-native';
+import React, { useEffect,useLayoutEffect, useState } from 'react';
+import { StyleSheet, Text,TextInput,ActivityIndicator, View,Button,TouchableOpacity, FlatList } from 'react-native';
 
 function MaintenanceHistoryScreen ({route, navigation}) {
 
-  const {itemID, adminViewer,aircraftID,hangarID} = route.params;
+  const {itemID, adminViewer,aircraftID,hangarID,maintenanceID} = route.params;
 
-//        onPress={() =>  navigation.navigate('Map',{itemID, adminViewer})}
+//       onPress={() =>  navigation.navigate('Map',{itemID, adminViewer})}
 
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{}} 
+      <TouchableOpacity style={{}} 
         onPress = {() =>  navigation.navigate('Sign-in') } >
-        <Text style={styles.rightHead} 
-        >Log Out</Text>
+        <Text style={styles.rightHead} >
+          Log Out
+        </Text>
       </TouchableOpacity>
       ),
     });
@@ -53,7 +54,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       
     ];
 
-    var i = aircraftID
+    var i = maintenanceID
 
 
     const Item = ({ title }) => (
@@ -66,22 +67,97 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       <Item title={item.title}/>
     );
 
+    const requestOptions = 
+    {
+        method: 'POST',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' }
+    }
+
+
+    const [Date, setDate] = useState('');
+    const [Team, setTeam] = useState('');
+
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    
+    function reload(){
+      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/maintenance_history',requestOptions)
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  
+    }
+
+
+  
+  
+  useEffect(() => {
+      fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/maintenance-history',sendOptions)
+        .then((response) => response.json())
+        .then((json) => setData(json))
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }, []);
+
+    var json = {};
+    json[0] = [];
+    json.serial = i
+    const sendOptions = 
+        {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(json)
+        }
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test//maintenance-history', sendOptions)
+
+    //const Serial = data[i].serial_No
+    console.log('NUMBER: ',i)
+    console.log(data)
+   // console.log(json)
+
+    var stat = ''
+
+    const [Serial, setSerial] = useState('');
+    var i = aircraftID;
+
     const air = ['hello ','world']
-    const place = 'enter data...'
+    const place = 'Update Data'
 
     return (
     
     <View style = {styles.back}>
         
       <View style={styles.info}>
-        <Text style={styles.inputText}t>Aircraft Serial: </Text>
+        <Text style={styles.inputText}>Aircraft Serial:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].aircraftNo}
+            </Text>
+            )}
+      </View>
+
+      <View style={styles.info}>
+        <Text style={styles.inputText}>Maintenance Team ID:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].Maintenance_Team_ID}
+            </Text>
+            )}
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
       </View>
 
       <View style={styles.info}>
-        <Text style={styles.inputText}>Aircraft Type: </Text>
+        <Text style={styles.inputText}>Maintenance Date:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].Maintenance_Date}
+            </Text>
+            )}
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>

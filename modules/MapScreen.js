@@ -156,9 +156,9 @@ useEffect(() => {
    <Text style={styles.titleText}>Offices</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:2})} >
         <Text style={{color: 'white'}}>
-          View Hangar Info
+          View Building Info
         </Text>
       </TouchableOpacity>
    </View>
@@ -170,9 +170,9 @@ useEffect(() => {
    <Text style={styles.titleText}>Equipment Bay</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
         <Text style={{color: 'white'}}>
-          View Hangar Info
+          View Building Info
         </Text>
       </TouchableOpacity>
    </View>
@@ -184,9 +184,9 @@ useEffect(() => {
    <Text style={styles.titleText}>Maintenance Bay</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:4})} >
         <Text style={{color: 'white'}}>
-          View Hangar Info
+          View Building Info
         </Text>
       </TouchableOpacity>
    </View>
@@ -198,9 +198,9 @@ useEffect(() => {
    <Text style={styles.titleText}>Fire Department</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:5})} >
         <Text style={{color: 'white'}}>
-          View Hangar Info
+         View Building Info
         </Text>
       </TouchableOpacity>
    </View>
@@ -216,13 +216,13 @@ useEffect(() => {
    <View style={styles.boxRow}>
    <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:6})} >
         <Text style={{color: 'white'}} >S - 1</Text>
       </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:10})} >
         <Text style={{color: 'white'}} >S - 2</Text>
       </TouchableOpacity>
     </View>
@@ -230,13 +230,13 @@ useEffect(() => {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:11})} >
         <Text style={{color: 'white'}} >S - 3</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:12})} >
         <Text style={{color: 'white'}} >S - 4</Text>
     </TouchableOpacity>
     </View>
@@ -244,13 +244,13 @@ useEffect(() => {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:13})} >
         <Text style={{color: 'white'}} >S - 5</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:14})} >
         <Text style={{color: 'white'}} >S - 6</Text>
     </TouchableOpacity>
     </View>
@@ -258,13 +258,13 @@ useEffect(() => {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:15})} >
         <Text style={{color: 'white'}} >S - 7</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:16})} >
         <Text style={{color: 'white'}} >S - 8</Text>
     </TouchableOpacity>
     </View>
@@ -272,12 +272,12 @@ useEffect(() => {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}> 
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:17})} >
         <Text style={{color: 'white'}} >S - 9</Text>
     </TouchableOpacity></View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:7})} >
         <Text style={{color: 'white'}} >S - 10</Text>
       </TouchableOpacity>
     </View>
@@ -285,13 +285,13 @@ useEffect(() => {
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:8})} >
         <Text style={{color: 'white'}} >S - 11</Text>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Air',{itemID,adminViewer,aircraftID,hangarID})} >
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:9})}>
         <Text style={{color: 'white'}} >S - 12</Text>
     </TouchableOpacity>
     </View>

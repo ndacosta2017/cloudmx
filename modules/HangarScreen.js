@@ -76,7 +76,8 @@ function HangarScreen ({route, navigation}) {
        var json = {};
        json[0] = [];
        json.name = data[i].building_Name;
-       json.status = BuildingStatus;
+       json.status = Status;
+       console.log(json)
     const sendOptions = 
         {
             method: 'POST',
@@ -96,14 +97,13 @@ function HangarScreen ({route, navigation}) {
 
     var i = hangarID
 
-    var empty = ' '
+    var empty = '  '
 
     const air = ['hello ','world']
 
     return (
     
-      <View style = {styles.overall} 
-      >
+      <View style = {styles.overall} >
   
         <View style={styles.info}>
         <View style={styles.display}>
@@ -135,6 +135,9 @@ function HangarScreen ({route, navigation}) {
               {data[i].building_status}
             </Text>
             )}
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
           </View>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
