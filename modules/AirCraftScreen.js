@@ -3,6 +3,8 @@ import 'react-native-gesture-handler';
 import React, { useEffect,useLayoutEffect, useState } from 'react';
 import { StyleSheet,TextInput,ActivityIndicator, Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import {Picker} from '@react-native-picker/picker';
+
 
 function AirCraftScreen ({route, navigation}) {
 
@@ -137,7 +139,7 @@ function AirCraftScreen ({route, navigation}) {
         json.last_flt = LASTFLIGHT.trim();
         json.team = Maintenance_H.trim();
         json.w = stat.trim();
-        json.status = Status.trim();
+        json.status = selectedLanguage.trim();
         json.etic = ETIC_H.trim();
         json.location = Location.trim();
         json.micaps = Micaps_H.trim();
@@ -210,6 +212,7 @@ console.log('TESTING!!!')
 
 //var test = myfunc() 
 //console.log(test)
+const [selectedLanguage, setSelectedLanguage] = useState();
 
     return (
     
@@ -231,16 +234,22 @@ console.log('TESTING!!!')
             )}
           </View>
         </View>
-
-
+      
         <View style={styles.info}>
           <View style={styles.display}>
             <Text style={styles.inputText}>
               Aircraft Status: 
             </Text>
-            <Text style={styles.inputText}>
-              {empty}
-            </Text>
+            <Picker
+              selectedValue={selectedLanguage}
+              mode='dialog'
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedLanguage(itemValue)
+                }>
+                <Picker.Item label="FMC" value="FMC " color="green" itemIndex="1" />
+                <Picker.Item label="PMC" value="PMC " itemIndex="2" />
+                <Picker.Item label="NMC" value="NMC " color="red" itemIndex="3" />
+              </Picker>
             {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
               {data[i].Aircraft_status}
