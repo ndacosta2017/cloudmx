@@ -207,7 +207,7 @@ function LoginScreen ({navigation}) {
       height: 50,
       flex: 1,
       padding: 10,
-      marginLeft: 20,
+      marginLeft: 40,
       color: 'white'
     },
     rightHead:{
