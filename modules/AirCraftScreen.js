@@ -381,7 +381,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
         <View style={styles.info}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
-              SORTIE_TYPE: 
+              Sortie Type: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
