@@ -72,8 +72,8 @@ useEffect(() => {
       .finally(() => setBuildingLoading(false));
   }, []);
 
-  console.log('data: ',data)
-  console.log('building data: ',BuildingData)
+ // console.log('data: ',data)
+ // console.log('building data: ',BuildingData)
 
 
  //var here = data[0].userFirstName
