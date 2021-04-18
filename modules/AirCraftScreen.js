@@ -281,83 +281,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
             editable={adminViewer} onChangeText={(Location) => setLocation(Location)}> 
           </TextInput>
         </View>
-  
-        <View style={styles.info}>
-        <View style={styles.display}>
-            <Text style={styles.inputText}>
-              Remarks: 
-            </Text>
-            <Text style={styles.inputText}>
-              {empty}
-            </Text>
-            {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[i].Remarks}
-            </Text>
-            )}
-          </View>
-          <TextInput style={styles.infoField} placeholder={place} value={Remarks}
-            editable={adminViewer} onChangeText={(Remarks) => setRemarks(Remarks)}> 
-          </TextInput>
-        </View>
-  
-        <View style={styles.info}>
-        <View style={styles.display}>
-            <Text style={styles.inputText}>
-              SORTIE_TYPE: 
-            </Text>
-            <Text style={styles.inputText}>
-              {empty}
-            </Text>
-            {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[i].SORTIE_TYPE}
-            </Text>
-            )}
-          </View>
-          <TextInput style={styles.infoField} placeholder={place} value={Sortie}
-            editable={adminViewer} onChangeText={(Sortie) => setSortie(Sortie)}> 
-          </TextInput>
-        </View>
- 
-        <View style={styles.info}>
-        <View style={styles.display}>
-            <Text style={styles.inputText}>
-              Maintenance Team: 
-            </Text>
-            <Text style={styles.inputText}>
-              {empty}
-            </Text>
-            {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[i].Maintenance_Team}
-            </Text>
-            )}
-          </View>
-          <TextInput style={styles.infoField} placeholder={place} value={Maintenance_H}
-            editable={adminViewer} onChangeText={(Maintenance_H) => setMaintenance(Maintenance_H)}> 
-          </TextInput>
-        </View>
-  
-        <View style={styles.info}>
-        <View style={styles.display}>
-            <Text style={styles.inputText}>
-              MICAPS: 
-            </Text>
-            <Text style={styles.inputText}>
-              {empty}
-            </Text>
-            {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[i].MICAPS}
-            </Text>
-            )}
-          </View>
-          <TextInput style={styles.infoField} placeholder={place} value={Micaps_H}
-            editable={adminViewer} onChangeText={(Micaps_H) => setMICAPS(Micaps_H)}> 
-          </TextInput>
-        </View>
-  
+
         <View style={styles.info}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
@@ -380,6 +304,63 @@ const [selectedLanguage, setSelectedLanguage] = useState();
         <View style={styles.info}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
+              Maintenance Lead: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].Maintenance_Team}
+            </Text>
+            )}
+          </View>
+          <TextInput style={styles.infoField} placeholder={place} value={Maintenance_H}
+            editable={adminViewer} onChangeText={(Maintenance_H) => setMaintenance(Maintenance_H)}> 
+          </TextInput>
+        </View>
+  
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              Remarks: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].Remarks}
+            </Text>
+            )}
+          </View>
+          <TextInput style={styles.infoField} placeholder={place} value={Remarks}
+            editable={adminViewer} onChangeText={(Remarks) => setRemarks(Remarks)}> 
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              MICAPS: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].MICAPS}
+            </Text>
+            )}
+          </View>
+          <TextInput style={styles.infoField} placeholder={place} value={Micaps_H}
+            editable={adminViewer} onChangeText={(Micaps_H) => setMICAPS(Micaps_H)}> 
+          </TextInput>
+        </View>
+
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
               ETIC: 
             </Text>
             <Text style={styles.inputText}>
@@ -395,6 +376,28 @@ const [selectedLanguage, setSelectedLanguage] = useState();
             editable={adminViewer} onChangeText={(ETIC_H) => setETIC(ETIC_H)}> 
           </TextInput>
         </View>
+
+  
+        <View style={styles.info}>
+        <View style={styles.display}>
+            <Text style={styles.inputText}>
+              SORTIE_TYPE: 
+            </Text>
+            <Text style={styles.inputText}>
+              {empty}
+            </Text>
+            {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[i].SORTIE_TYPE}
+            </Text>
+            )}
+          </View>
+          <TextInput style={styles.infoField} placeholder={place} value={Sortie}
+            editable={adminViewer} onChangeText={(Sortie) => setSortie(Sortie)}> 
+          </TextInput>
+        </View>
+ 
+  
 
         <View style={styles.info}>
          <View style={styles.basicRow}>

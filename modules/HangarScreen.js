@@ -146,21 +146,13 @@ function HangarScreen ({route, navigation}) {
   
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Number of Aircraft: </Text>
+          <Text style={styles.inputText}>Aircraft Serial: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
           </TextInput>
         </View>
   
-        <View style={styles.info}>
-        <View style={styles.display}>
-          <Text style={styles.inputText}>Aircraft Under Maintenance: </Text>
-        </View>
-          <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
-          </TextInput>
-        </View>
   
         <View style={styles.info}>
         <View style={styles.display}>

@@ -35,7 +35,9 @@ function MapScreen ({route, navigation}) {
   json.pass = itemPass;
   
   const [isLoading, setLoading] = useState(true);
+  const [isBuildingLoading, setBuildingLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [BuildingData, setBuildingData] = useState([]);
   
   function reload(){
     fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users',requestOptions)
@@ -62,6 +64,18 @@ useEffect(() => {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/hangar',requestOptions)
+      .then((response) => response.json())
+      .then((json) => setBuildingData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setBuildingLoading(false));
+  }, []);
+
+  console.log('data: ',data)
+  console.log('building data: ',BuildingData)
+
+
  //var here = data[0].userFirstName
 
   //var ritemID = itemID
@@ -80,7 +94,7 @@ useEffect(() => {
   {isLoading ? <ActivityIndicator/> : (
      <Text style={styles.inputText}>
         Hello, user {(adminViewer) ? 
-        itemID  : 
+        itemID : 
         data[0].userFirstName +' '+ data[0].userLastName } 
       </Text>
     )}
@@ -124,13 +138,39 @@ useEffect(() => {
 
  <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
-   <Text style={styles.titleText}>Hangar 731 </Text>
+   <Text style={styles.titleText}>Bay 3</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
+        <Text style={{color: 'white'}}>
+          View Building Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Hangar 731  </Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:0})}>
         <Text style={{color: 'white'}}>
           View Hangar Info
         </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} >
+      <View style={styles.topText}>
+       {isBuildingLoading ? <ActivityIndicator/> : (
+        <Text style={styles.inputText}>
+          Aircraft Serial #: {BuildingData[0].building_status} 
+        </Text>
+        )}
+      </View>
       </TouchableOpacity>
    </View>
   </View>
@@ -147,27 +187,25 @@ useEffect(() => {
         </Text>
       </TouchableOpacity>
    </View>
-   
-  </View>
- </View>
-
- <View style={styles.hangar}> 
-  <View style={styles.hangarInfo}>
-   <Text style={styles.titleText}>Offices</Text>
    <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:2})} >
-        <Text style={{color: 'white'}}>
-          View Building Info
+      <TouchableOpacity style={{}} >
+      <View style={styles.topText}>
+       {isBuildingLoading ? <ActivityIndicator/> : (
+        <Text style={styles.inputText}>
+          Aircraft Serial #: {BuildingData[1].building_status} 
         </Text>
+        )}
+      </View>
       </TouchableOpacity>
    </View>
   </View>
  </View>
 
+
+
  <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
-   <Text style={styles.titleText}>Equipment Bay</Text>
+   <Text style={styles.titleText}>CTK</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
@@ -178,6 +216,21 @@ useEffect(() => {
    </View>
   </View>
  </View>
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>AGE</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
+        <Text style={{color: 'white'}}>
+          View Building Info
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+ 
 
  <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
@@ -193,24 +246,11 @@ useEffect(() => {
   </View>
  </View>
 
- <View style={styles.hangar}> 
-  <View style={styles.hangarInfo}>
-   <Text style={styles.titleText}>Fire Department</Text>
-   <View style={styles.infoButton}>
-      <TouchableOpacity style={{}} 
-        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:5})} >
-        <Text style={{color: 'white'}}>
-         View Building Info
-        </Text>
-      </TouchableOpacity>
-   </View>
-  </View>
- </View>
 
 
  <View style={styles.runway}>
  <View style={styles.textRun}>
-   <Text style={styles.titleText}>Runway</Text>
+   <Text style={styles.titleText}>Ramp</Text>
   </View>
   <View style={styles.grid}>
    <View style={styles.boxRow}>
