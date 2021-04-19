@@ -73,7 +73,7 @@ useEffect(() => {
   }, []);
 
  // console.log('data: ',data)
- // console.log('building data: ',BuildingData)
+  console.log('building data: ',BuildingData)
 
 
  //var here = data[0].userFirstName
@@ -254,30 +254,62 @@ useEffect(() => {
   </View>
   <View style={styles.grid}>
    <View style={styles.boxRow}>
+
    <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:6})} >
-        <Text style={{color: 'white'}} >S - 1</Text>
+        <Text style={styles.inputText} >S - 1</Text>
+         <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[6].building_status} 
+           </Text>
+           )}
+         </View>
       </TouchableOpacity>
     </View>
+
     <View style={styles.bigBlue}> 
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:10})} >
-        <Text style={{color: 'white'}} >S - 2</Text>
+        <Text style={styles.inputText} >S - 2</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[10].building_status} 
+           </Text>
+           )}
+         </View>
       </TouchableOpacity>
     </View>
    </View>
+
    <View style={styles.boxRow}>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:11})} >
-        <Text style={{color: 'white'}} >S - 3</Text>
+        <Text style={styles.inputText} >S - 3</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[11].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
+
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:12})} >
-        <Text style={{color: 'white'}} >S - 4</Text>
+        <Text style={styles.inputText} >S - 4</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[12].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
    </View>
@@ -285,13 +317,27 @@ useEffect(() => {
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:13})} >
-        <Text style={{color: 'white'}} >S - 5</Text>
+        <Text style={styles.inputText} >S - 5</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[13].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:14})} >
-        <Text style={{color: 'white'}} >S - 6</Text>
+        <Text style={styles.inputText} >S - 6</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[14].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
    </View>
@@ -299,13 +345,27 @@ useEffect(() => {
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:15})} >
-        <Text style={{color: 'white'}} >S - 7</Text>
+        <Text style={styles.inputText} >S - 7</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[15].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:16})} >
-        <Text style={{color: 'white'}} >S - 8</Text>
+        <Text style={styles.inputText} >S - 8</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[16].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
    </View>
@@ -313,12 +373,26 @@ useEffect(() => {
     <View style={styles.bigBlue}> 
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:17})} >
-        <Text style={{color: 'white'}} >S - 9</Text>
+        <Text style={styles.inputText} >S - 9</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[17].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity></View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:7})} >
-        <Text style={{color: 'white'}} >S - 10</Text>
+        <Text style={styles.inputText} >S - 10</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[7].building_status} 
+           </Text>
+           )}
+         </View>
       </TouchableOpacity>
     </View>
    </View>
@@ -326,13 +400,27 @@ useEffect(() => {
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:8})} >
-        <Text style={{color: 'white'}} >S - 11</Text>
+        <Text style={styles.inputText} >S - 11</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[8].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
     <View style={styles.bigBlue}>
     <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:9})}>
-        <Text style={{color: 'white'}} >S - 12</Text>
+        <Text style={styles.inputText} >S - 12</Text>
+        <View >
+          {isBuildingLoading ? <ActivityIndicator/> : (
+           <Text style={styles.inputText}>
+             {BuildingData[9].building_status} 
+           </Text>
+           )}
+         </View>
     </TouchableOpacity>
     </View>
    </View>
@@ -464,7 +552,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#000080",
   },
   inputText: {
-    color: 'white'
+    color: 'white',
+    alignSelf:'center'
   },
   logo: {
     borderColor: "blue",

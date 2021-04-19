@@ -204,10 +204,11 @@ function LoginScreen ({navigation}) {
     },
   
     TextInput: {
+      alignSelf:'center',
       height: 50,
       flex: 1,
       padding: 10,
-      marginLeft: 40,
+      marginLeft: 20,
       color: 'white'
     },
     rightHead:{
