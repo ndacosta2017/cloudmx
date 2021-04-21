@@ -235,7 +235,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           </View>
         </View>
       
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
           <View style={styles.display}>
             <Text style={styles.inputText}>
               Aircraft Status: 
@@ -282,7 +282,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           </TextInput>
         </View>
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               Last Flight: 
@@ -320,7 +320,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           </TextInput>
         </View>
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               Remarks: 
@@ -358,7 +358,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           </TextInput>
         </View>
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               ETIC: 
@@ -399,7 +399,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
  
   
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
          <View style={styles.basicRow}>
           <Text style={styles.history} onPress={() => 
            navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID,maintenanceID:stat})}>
@@ -425,7 +425,8 @@ const [selectedLanguage, setSelectedLanguage] = useState();
       flex: 1, 
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
-      backgroundColor: '#0a3161' ,
+     // backgroundColor: '#0a3161' ,
+      backgroundColor: 'grey',
       padding: 10
     },
     basicRow:{
@@ -457,7 +458,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
     },
 
     history:{
-      color: 'white',
+      color: '#000',
       justifyContent: 'center',
       alignSelf: 'center',
       alignItems: 'center',
@@ -510,7 +511,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
       backgroundColor: "#000080",
     },
     inputText: {
-      color: 'white',
+      color: '#000',
       fontSize: 15,
       flexDirection: 'row',
     },
@@ -561,7 +562,10 @@ const [selectedLanguage, setSelectedLanguage] = useState();
     },
     info: {
       
-      backgroundColor: "#b31942",
+     // backgroundColor: "#b31942",
+      borderColor: '#b31942',
+      borderWidth: 5,
+      backgroundColor: '#FFF',
       borderRadius: 30,
       width: "100%",
       height: 45,
@@ -569,9 +573,23 @@ const [selectedLanguage, setSelectedLanguage] = useState();
       flex: 0.6,
       flexDirection: 'row',
       padding: 10,
-      borderTopColor: 'black',
-      
+     // borderTopColor: 'black', 
     },
+    infoBlue: {
+      
+      // backgroundColor: "#b31942",
+       borderColor: 'blue',
+       borderWidth: 5,
+       backgroundColor: '#FFF',
+       borderRadius: 30,
+       width: "100%",
+       height: 45,
+       marginBottom: 9,
+       flex: 0.6,
+       flexDirection: 'row',
+       padding: 10,
+      // borderTopColor: 'black', 
+     },
     
   })
 

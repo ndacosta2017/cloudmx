@@ -73,7 +73,7 @@ useEffect(() => {
   }, []);
 
  // console.log('data: ',data)
-  console.log('building data: ',BuildingData)
+ // console.log('building data: ',BuildingData)
 
 
  //var here = data[0].userFirstName
@@ -118,7 +118,7 @@ useEffect(() => {
        onPress={ (adminViewer) ? 
         () => navigation.navigate('AddAdmin',{itemID,adminViewer}) : 
         () => alert('You are not an Administrator. You can not new admin users') } >
-        <Text style={{color: 'white'}}>
+        <Text style={{color: 'black'}}>
           Add A New Admin User
         </Text>
       </TouchableOpacity>
@@ -128,7 +128,7 @@ useEffect(() => {
         onPress={ (adminViewer) ? 
           () => navigation.navigate('AddUser',{itemID,adminViewer}) : 
           () => alert('You are not an Administrator. You can not new add users') } >
-        <Text style={{color: 'white'}}>
+        <Text style={{color: 'black'}}>
           Add A New Viewer User
         </Text>
       </TouchableOpacity>
@@ -136,13 +136,13 @@ useEffect(() => {
   </View>
  </View>
 
- <View style={styles.hangar}> 
+ <View style={styles.hangarBlue}> 
   <View style={styles.hangarInfo}>
    <Text style={styles.titleText}>Bay 3</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
-        <Text style={{color: 'white'}}>
+        <Text style={styles.boxText}>
           View Building Info
         </Text>
       </TouchableOpacity>
@@ -157,7 +157,7 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
        onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:0})}>
-        <Text style={{color: 'white'}}>
+        <Text  style={styles.boxText}>
           View Hangar Info
         </Text>
       </TouchableOpacity>
@@ -166,7 +166,7 @@ useEffect(() => {
       <TouchableOpacity style={{}} >
       <View style={styles.topText}>
        {isBuildingLoading ? <ActivityIndicator/> : (
-        <Text style={styles.inputText}>
+        <Text style={styles.boxText}>
           Aircraft Serial #: {BuildingData[0].building_status} 
         </Text>
         )}
@@ -176,13 +176,13 @@ useEffect(() => {
   </View>
  </View>
 
- <View style={styles.hangar}> 
+ <View style={styles.hangarBlue}> 
   <View style={styles.hangarInfo}>
    <Text style={styles.titleText}>Hangar 746</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:1})} >
-        <Text style={{color: 'white'}}>
+        <Text  style={styles.boxText}>
           View Hangar Info
         </Text>
       </TouchableOpacity>
@@ -191,7 +191,7 @@ useEffect(() => {
       <TouchableOpacity style={{}} >
       <View style={styles.topText}>
        {isBuildingLoading ? <ActivityIndicator/> : (
-        <Text style={styles.inputText}>
+        <Text style={styles.boxText}>
           Aircraft Serial #: {BuildingData[1].building_status} 
         </Text>
         )}
@@ -209,7 +209,7 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
-        <Text style={{color: 'white'}}>
+        <Text style={styles.boxText}>
           View Building Info
         </Text>
       </TouchableOpacity>
@@ -217,13 +217,13 @@ useEffect(() => {
   </View>
  </View>
 
- <View style={styles.hangar}> 
+ <View style={styles.hangarBlue}> 
   <View style={styles.hangarInfo}>
    <Text style={styles.titleText}>AGE</Text>
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
-        <Text style={{color: 'white'}}>
+        <Text style={styles.boxText}>
           View Building Info
         </Text>
       </TouchableOpacity>
@@ -238,7 +238,7 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} 
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:4})} >
-        <Text style={{color: 'white'}}>
+        <Text style={styles.boxText}>
           View Building Info
         </Text>
       </TouchableOpacity>
@@ -441,14 +441,17 @@ useEffect(() => {
 const styles = StyleSheet.create({
   overall: {
     flex: 1,
-    backgroundColor:'#0a3161',
+    backgroundColor:'gray',
     
   },
   main:{
     flex: 0.2, 
     justifyContent: 'center', 
     alignItems: 'center', 
-    backgroundColor:'#b31942',
+   // backgroundColor:'#b31942',
+    borderWidth: 5,
+    borderColor: '#00F',
+    backgroundColor: '#FFF',
     borderRadius:30,
     margin:30
   },
@@ -489,15 +492,15 @@ const styles = StyleSheet.create({
   },
   topText: {
     flex:.5, 
-    color: '#fff', 
-    fontSize: 15, 
+    color: '#000', 
+    //fontSize: 15, 
     padding: 5,
   
   },
   topBold: {
     flex:.5, 
-    color: '#fff', 
-    fontSize: 15, 
+    color: '#000', 
+   // fontSize: 15, 
     padding: 5,
     fontWeight: 'bold'
   
@@ -510,6 +513,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
   },
+  boxText: {
+    color: '#000'
+  },
 
   TextInput: {
     height: 50,
@@ -520,7 +526,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 35,
-    color: 'white'
+    color: '#000'
   },
 
   forgot_button: {
@@ -535,7 +541,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
     width: 170, 
     height: 50,
-    backgroundColor: '#0a3161'
+    borderWidth: 1,
+    color: '#000',
+    backgroundColor: '#FFF'
+  //  backgroundColor: '#0a3161'
   },
   hangarInfo: {
     justifyContent: 'center',
@@ -552,7 +561,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000080",
   },
   inputText: {
-    color: 'white',
+    color: 'black',
     alignSelf:'center'
   },
   logo: {
@@ -571,15 +580,32 @@ const styles = StyleSheet.create({
   hangar : {
    flex: .5,
    justifyContent: 'center',
-   backgroundColor: '#b31942', 
+  // backgroundColor: '#b31942', 
+   backgroundColor: '#FFF', 
+   borderColor: '#b31942',
+   borderWidth: 5,
    height: 275,
    borderRadius: 40,
    margin: 30
   },
+  hangarBlue : {
+    flex: .5,
+    justifyContent: 'center',
+   // backgroundColor: '#b31942', 
+    backgroundColor: '#FFF', 
+    borderColor: 'blue',
+    borderWidth: 5,
+    height: 275,
+    borderRadius: 40,
+    margin: 30
+   },
   runway : {
     flex: .5,
     justifyContent: 'center',
-    backgroundColor: '#b31942', 
+    borderColor: 'blue',
+    borderWidth: 5,
+   // backgroundColor: '#b31942', 
+    backgroundColor: '#FFF',
     height: 800,
     borderRadius: 40,
     margin: 30
@@ -588,9 +614,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center', 
     borderRadius: 20, 
+    borderColor: '#000',
+    borderWidth: 1,
     width: 70, 
-    height: 70, 
-    backgroundColor: '#0a3161'
+    height: 70,
+    backgroundColor: '#FFF', 
+   // backgroundColor: '#0a3161'
+    
 
   },
   input : {

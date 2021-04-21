@@ -131,7 +131,8 @@ function AllAircraftScreen ({route, navigation}) {
         back:{flex: 1, 
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
-          backgroundColor: '#0a3161',
+         // backgroundColor: '#0a3161',
+          backgroundColor: 'gray',
           padding: 10
         },
         container: {
@@ -208,7 +209,7 @@ function AllAircraftScreen ({route, navigation}) {
           backgroundColor: "#000080",
         },
         inputText: {
-          color: 'white'
+          color: 'black'
         },
         logo: {
           borderColor: "blue",
@@ -251,8 +252,10 @@ function AllAircraftScreen ({route, navigation}) {
           borderBottomColor: 'black'
         },
         info: {
-          
-          backgroundColor: "#b31942",
+          backgroundColor: '#FFF',
+          borderColor: 'blue',
+          borderWidth: 5,
+         // backgroundColor: "#b31942",
           borderRadius: 30,
           width: "100%",
           height: 45,
@@ -260,7 +263,7 @@ function AllAircraftScreen ({route, navigation}) {
           flex: 0.6,
           flexDirection: 'row',
           padding: 10,
-          borderTopColor: 'black',
+         // borderTopColor: 'black',
           
         },
         

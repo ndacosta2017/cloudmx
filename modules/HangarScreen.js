@@ -122,7 +122,7 @@ function HangarScreen ({route, navigation}) {
          </View>
         </View>
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
         <Text style={styles.inputText}>
               Building Status: 
@@ -154,7 +154,7 @@ function HangarScreen ({route, navigation}) {
         </View>
   
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Latest Inspection Date </Text>
         </View>
@@ -172,7 +172,7 @@ function HangarScreen ({route, navigation}) {
           </TextInput>
         </View>
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
          <View style={styles.basicRow}>
           <Text style={styles.history} onPress={() => 
            navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID})}>
@@ -210,7 +210,8 @@ function HangarScreen ({route, navigation}) {
       flex: 1, 
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
-      backgroundColor: '#0a3161',
+     // backgroundColor: '#0a3161',
+      backgroundColor: 'gray',
       padding: 10
     },
   
@@ -224,7 +225,7 @@ function HangarScreen ({route, navigation}) {
     },
 
     history:{
-      color: 'white',
+      color: '#000',
       justifyContent: 'center',
       alignSelf: 'center',
       alignItems: 'center',
@@ -272,7 +273,7 @@ function HangarScreen ({route, navigation}) {
       backgroundColor: "#000080",
     },
     inputText: {
-      color: 'white'
+      color: '#000'
     },
     logo: {
       borderColor: "blue",
@@ -326,8 +327,10 @@ function HangarScreen ({route, navigation}) {
       fontWeight: 'bold'
     },
     info: {
-      
-      backgroundColor: "#b31942",
+      backgroundColor: '#FFF',
+      borderColor: '#b31942',
+      borderWidth: 5,
+    //  backgroundColor: "#b31942",
       borderRadius: 30,
       width: "100%",
       height: 45,
@@ -335,8 +338,21 @@ function HangarScreen ({route, navigation}) {
       flex: 0.6,
       flexDirection: 'row',
       padding: 10,
-      borderTopColor: 'black',
-      
+      //borderTopColor: 'black',  
+    },
+    infoBlue: {
+      backgroundColor: '#FFF',
+      borderColor: 'blue',
+      borderWidth: 5,
+    //  backgroundColor: "#b31942",
+      borderRadius: 30,
+      width: "100%",
+      height: 45,
+      marginBottom: 9,
+      flex: 0.6,
+      flexDirection: 'row',
+      padding: 10,
+      //borderTopColor: 'black',  
     },
     
   })
