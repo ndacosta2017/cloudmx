@@ -110,7 +110,7 @@ function AddUserScreen ({route, navigation}) {
         </TextInput>
         </View>
   
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add User Password: </Text>
         </View>
@@ -128,7 +128,7 @@ function AddUserScreen ({route, navigation}) {
           </TextInput>
         </View>
 
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add User's Last Name: </Text>
         </View>

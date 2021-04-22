@@ -49,7 +49,7 @@ function AllAircraftScreen ({route, navigation}) {
       }, []);
   
       //const Serial = data[i].serial_No
-      //console.log(data)
+      console.log('DATA:',data)
   
       var stat = ''
     
@@ -253,7 +253,7 @@ function AllAircraftScreen ({route, navigation}) {
         },
         info: {
           backgroundColor: '#FFF',
-          borderColor: 'blue',
+          borderColor: '#000080',
           borderWidth: 5,
          // backgroundColor: "#b31942",
           borderRadius: 30,

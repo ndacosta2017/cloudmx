@@ -91,7 +91,7 @@ function HangarScreen ({route, navigation}) {
       reload()
     }
   
-   // console.log('\ndata: ',data)
+    console.log('\ndata: ',data)
 
     var status = 'hwllo'
 
@@ -122,7 +122,7 @@ function HangarScreen ({route, navigation}) {
          </View>
         </View>
   
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
         <View style={styles.display}>
         <Text style={styles.inputText}>
               Building Status: 
@@ -154,7 +154,7 @@ function HangarScreen ({route, navigation}) {
         </View>
   
   
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Latest Inspection Date </Text>
         </View>
@@ -172,7 +172,7 @@ function HangarScreen ({route, navigation}) {
           </TextInput>
         </View>
 
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
          <View style={styles.basicRow}>
           <Text style={styles.history} onPress={() => 
            navigation.navigate('History',{itemID, adminViewer,aircraftID,hangarID})}>

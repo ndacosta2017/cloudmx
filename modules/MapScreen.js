@@ -27,6 +27,8 @@ function MapScreen ({route, navigation}) {
 
   var modo = 'Viewer'
 
+  var mode = adminViewer;
+
   modo = (adminViewer) ? 'Admin' : 'Viewer'
 
   var json = {};
@@ -176,7 +178,7 @@ useEffect(() => {
   </View>
  </View>
 
- <View style={styles.hangarBlue}> 
+ <View style={styles.hangar}> 
   <View style={styles.hangarInfo}>
    <Text style={styles.titleText}>Hangar 746</Text>
    <View style={styles.infoButton}>
@@ -450,7 +452,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
    // backgroundColor:'#b31942',
     borderWidth: 5,
-    borderColor: '#00F',
+    borderColor: '#000080',
     backgroundColor: '#FFF',
     borderRadius:30,
     margin:30
@@ -582,7 +584,7 @@ const styles = StyleSheet.create({
    justifyContent: 'center',
   // backgroundColor: '#b31942', 
    backgroundColor: '#FFF', 
-   borderColor: '#b31942',
+   borderColor: '#000080' ,
    borderWidth: 5,
    height: 275,
    borderRadius: 40,
@@ -593,7 +595,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
    // backgroundColor: '#b31942', 
     backgroundColor: '#FFF', 
-    borderColor: 'blue',
+    borderColor: '#000080',
     borderWidth: 5,
     height: 275,
     borderRadius: 40,
@@ -602,7 +604,7 @@ const styles = StyleSheet.create({
   runway : {
     flex: .5,
     justifyContent: 'center',
-    borderColor: 'blue',
+    borderColor: '#000080',
     borderWidth: 5,
    // backgroundColor: '#b31942', 
     backgroundColor: '#FFF',

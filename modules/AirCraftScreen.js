@@ -218,7 +218,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
     
     <View style = {styles.main}>
       
-      <View style={styles.info}>
+      <View style={styles.infoBlue}>
           <View style={styles.display}>
             <Text style={styles.inputText}>
               Aircraft Serial: 
@@ -263,7 +263,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
 
 
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               Aircraft Location: 
@@ -301,7 +301,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           </TextInput>
         </View>
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               Maintenance Lead: 
@@ -311,7 +311,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
             </Text>
             {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
-              {data[i].Maintenance_Team}
+              {data[i].leadMaintainer}
             </Text>
             )}
           </View>
@@ -339,7 +339,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           </TextInput>
         </View>
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               MICAPS: 
@@ -378,7 +378,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
         </View>
 
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
             <Text style={styles.inputText}>
               Sortie Type: 
@@ -563,7 +563,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
     info: {
       
      // backgroundColor: "#b31942",
-      borderColor: '#b31942',
+      borderColor: '#000080',
       borderWidth: 5,
       backgroundColor: '#FFF',
       borderRadius: 30,
@@ -578,7 +578,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
     infoBlue: {
       
       // backgroundColor: "#b31942",
-       borderColor: 'blue',
+       borderColor: '#000080',
        borderWidth: 5,
        backgroundColor: '#FFF',
        borderRadius: 30,

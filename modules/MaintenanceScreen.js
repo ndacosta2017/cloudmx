@@ -115,7 +115,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
 
     //const Serial = data[i].serial_No
   //  console.log('NUMBER: ',i)
-  //  console.log(data)
+    console.log('DATA: ',data)
    // console.log(json)
 
     var stat = ''
@@ -139,11 +139,47 @@ function MaintenanceHistoryScreen ({route, navigation}) {
             )}
       </View>
 
-      <View style={styles.infoBlue}>
+      <View style={styles.info}>
         <Text style={styles.inputText}>Maintenance Team ID:  </Text>
         {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
               {data[0].Maintenance_Team_ID}
+            </Text>
+            )}
+        <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+        </TextInput>
+      </View>
+
+      <View style={styles.info}>
+        <Text style={styles.inputText}>Location:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].LOCATION}
+            </Text>
+            )}
+        <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+        </TextInput>
+      </View>
+
+      <View style={styles.info}>
+        <Text style={styles.inputText}>MICAPS:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].MICAPS}
+            </Text>
+            )}
+        <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+        </TextInput>
+      </View>
+
+      <View style={styles.info}>
+        <Text style={styles.inputText}>ETIC:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].timeOfCompletion}
             </Text>
             )}
         <TextInput style={styles.infoField} placeholder={place}
@@ -163,7 +199,20 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         </TextInput>
       </View>
 
-      <View style={styles.infoBlue}>
+      <View style={styles.info}>
+        <Text style={styles.inputText}>LAST_FLT:  </Text>
+        {isLoading ? <ActivityIndicator/> : (
+            <Text style={styles.inputText}>
+              {data[0].LAST_FLT}
+            </Text>
+            )}
+        <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+        </TextInput>
+      </View>
+      
+
+      <View style={styles.info}>
         <Text style={styles.inputText}>Dates:</Text>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
@@ -300,7 +349,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     },
     infoField:{
       flex: 0.8,
-      fontSize: 30
+      fontSize: 20
     },
     input : {
       width: 200,
@@ -312,7 +361,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     //  backgroundColor: "#b31942",
       backgroundColor: '#FFF',
       borderWidth: 5,
-      borderColor: '#b31942',
+      borderColor: '#000080',
       borderRadius: 30,
       width: "100%",
       height: 45,
@@ -320,6 +369,8 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       flex: 0.6,
       flexDirection: 'row',
       padding: 10,
+     // justifyContent: 'center',
+      alignItems: 'center',
     //  borderTopColor: 'black',
     },
     infoBlue: {
@@ -327,7 +378,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       //  backgroundColor: "#b31942",
         backgroundColor: '#FFF',
         borderWidth: 5,
-        borderColor: 'blue',
+        borderColor: '#000080',
         borderRadius: 30,
         width: "100%",
         height: 45,

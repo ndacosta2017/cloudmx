@@ -101,7 +101,7 @@ function AddAdminScreen ({route, navigation}) {
         </TextInput>
         </View>
   
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add Admin Password: </Text>
         </View>
@@ -120,7 +120,7 @@ function AddAdminScreen ({route, navigation}) {
           </TextInput>
         </View>
 
-        <View style={styles.infoBlue}>
+        <View style={styles.info}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add Admin's Last name: </Text>
         </View>
