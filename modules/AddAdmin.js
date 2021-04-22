@@ -90,7 +90,7 @@ function AddAdminScreen ({route, navigation}) {
         <View style={styles.info}>
         <View style={styles.display}>
         <Text style={styles.inputText}>
-              Add Admin Name: 
+              Add Admin UserName: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
@@ -101,7 +101,7 @@ function AddAdminScreen ({route, navigation}) {
         </TextInput>
         </View>
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add Admin Password: </Text>
         </View>
@@ -120,7 +120,7 @@ function AddAdminScreen ({route, navigation}) {
           </TextInput>
         </View>
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add Admin's Last name: </Text>
         </View>
@@ -156,7 +156,9 @@ function AddAdminScreen ({route, navigation}) {
     },
     basicRow:{
       flex:1,
-      flexDirection: 'row'
+      flexDirection: 'row',
+      alignItems: "center",
+      justifyContent: "center",
     },
     image: {
       marginBottom: 40,
@@ -165,7 +167,8 @@ function AddAdminScreen ({route, navigation}) {
       flex: 1, 
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
-      backgroundColor: '#0a3161',
+     // backgroundColor: '#0a3161',
+      backgroundColor: 'gray',
       padding: 10
     },
   
@@ -179,11 +182,11 @@ function AddAdminScreen ({route, navigation}) {
     },
 
     history:{
-      color: 'white',
+      color: '#000',
       justifyContent: 'center',
       alignSelf: 'center',
       alignItems: 'center',
-      marginLeft: '15%'
+   //   marginLeft: '30%'
 
     },
   
@@ -227,7 +230,7 @@ function AddAdminScreen ({route, navigation}) {
       backgroundColor: "#000080",
     },
     inputText: {
-      color: 'white'
+      color: '#000'
     },
     logo: {
       borderColor: "blue",
@@ -282,7 +285,9 @@ function AddAdminScreen ({route, navigation}) {
     },
     info: {
       
-      backgroundColor: "#b31942",
+      backgroundColor: "#FFF",
+      borderWidth: 5,
+      borderColor: '#b31942',
       borderRadius: 30,
       width: "100%",
       height: 45,
@@ -290,10 +295,24 @@ function AddAdminScreen ({route, navigation}) {
       flex: 0.6,
       flexDirection: 'row',
       padding: 10,
-      borderTopColor: 'black',
+    //  borderTopColor: 'black',
       
     },
-    
+    infoBlue: {
+      
+      backgroundColor: "#FFF",
+      borderWidth: 5,
+      borderColor: 'blue',
+      borderRadius: 30,
+      width: "100%",
+      height: 45,
+      marginBottom: 9,
+      flex: 0.6,
+      flexDirection: 'row',
+      padding: 10,
+    //  borderTopColor: 'black',
+      
+    },
   })
 
 export default AddAdminScreen;

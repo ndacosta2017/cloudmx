@@ -37,9 +37,10 @@ function App(navigation) {
       <Stack.Screen name="Sign-in" component={SiginScreen} />
 
       <Stack.Screen name="Password" component={PassWordScreen} 
-      options={{title: 'Password Recovery'}}/>
+         options={{title: 'Password Recovery'}}/>
       
-      <Stack.Screen name="Map" component={MapScreen} />
+      <Stack.Screen name="Map" component={MapScreen} 
+         options={{title: 'Home'}}/>
 
       <Stack.Screen name="AddUser" component={AddUserScreen} 
          options={{title: 'Add User'}}/>

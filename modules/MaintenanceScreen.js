@@ -114,8 +114,8 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test//maintenance-history', sendOptions)
 
     //const Serial = data[i].serial_No
-    console.log('NUMBER: ',i)
-    console.log(data)
+  //  console.log('NUMBER: ',i)
+  //  console.log(data)
    // console.log(json)
 
     var stat = ''
@@ -139,7 +139,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
             )}
       </View>
 
-      <View style={styles.info}>
+      <View style={styles.infoBlue}>
         <Text style={styles.inputText}>Maintenance Team ID:  </Text>
         {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
@@ -163,7 +163,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         </TextInput>
       </View>
 
-      <View style={styles.info}>
+      <View style={styles.infoBlue}>
         <Text style={styles.inputText}>Dates:</Text>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
@@ -187,7 +187,8 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     back:{flex: 1, 
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
-      backgroundColor: '#0a3161',
+     // backgroundColor: '#0a3161',
+      backgroundColor: 'gray',
       padding: 10
     },
     container: {
@@ -264,7 +265,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       backgroundColor: "#000080",
     },
     inputText: {
-      color: 'white'
+      color: '#000'
     },
     logo: {
       borderColor: "blue",
@@ -308,7 +309,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     },
     info: {
       
-      backgroundColor: "#b31942",
+    //  backgroundColor: "#b31942",
+      backgroundColor: '#FFF',
+      borderWidth: 5,
+      borderColor: '#b31942',
       borderRadius: 30,
       width: "100%",
       height: 45,
@@ -316,9 +320,23 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       flex: 0.6,
       flexDirection: 'row',
       padding: 10,
-      borderTopColor: 'black',
-      
+    //  borderTopColor: 'black',
     },
+    infoBlue: {
+      
+      //  backgroundColor: "#b31942",
+        backgroundColor: '#FFF',
+        borderWidth: 5,
+        borderColor: 'blue',
+        borderRadius: 30,
+        width: "100%",
+        height: 45,
+        marginBottom: 9,
+        flex: 0.6,
+        flexDirection: 'row',
+        padding: 10,
+      //  borderTopColor: 'black',
+      },
     
   })
 

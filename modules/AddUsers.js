@@ -110,7 +110,7 @@ function AddUserScreen ({route, navigation}) {
         </TextInput>
         </View>
   
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
           <Text style={styles.inputText}>Add User Password: </Text>
         </View>
@@ -121,16 +121,16 @@ function AddUserScreen ({route, navigation}) {
 
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add User's First Name </Text>
+          <Text style={styles.inputText}>Add User's First Name: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(FirstName) => setFirstName(FirstName)}>  
           </TextInput>
         </View>
 
-        <View style={styles.info}>
+        <View style={styles.infoBlue}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add User's Last Name </Text>
+          <Text style={styles.inputText}>Add User's Last Name: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(LastName) => setLastName(LastName)}>  
@@ -164,7 +164,9 @@ function AddUserScreen ({route, navigation}) {
     },
     basicRow:{
       flex:1,
-      flexDirection: 'row'
+      flexDirection: 'row',
+      alignItems: "center",
+      justifyContent: "center",
     },
     image: {
       marginBottom: 40,
@@ -173,7 +175,8 @@ function AddUserScreen ({route, navigation}) {
       flex: 1, 
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
-      backgroundColor: '#0a3161',
+     // backgroundColor: '#0a3161',
+      backgroundColor: 'gray',
       padding: 10
     },
   
@@ -187,11 +190,11 @@ function AddUserScreen ({route, navigation}) {
     },
 
     history:{
-      color: 'white',
+      color: '#000',
       justifyContent: 'center',
       alignSelf: 'center',
       alignItems: 'center',
-      marginLeft: '15%'
+     // marginLeft: '15%'
 
     },
   
@@ -235,7 +238,7 @@ function AddUserScreen ({route, navigation}) {
       backgroundColor: "#000080",
     },
     inputText: {
-      color: 'white'
+      color: '#000'
     },
     logo: {
       borderColor: "blue",
@@ -289,8 +292,10 @@ function AddUserScreen ({route, navigation}) {
       fontWeight: 'bold'
     },
     info: {
-      
-      backgroundColor: "#b31942",
+      backgroundColor: "#FFF",
+      borderWidth: 5,
+      borderColor: '#b31942',
+      //backgroundColor: "#b31942",
       borderRadius: 30,
       width: "100%",
       height: 45,
@@ -298,9 +303,25 @@ function AddUserScreen ({route, navigation}) {
       flex: 0.6,
       flexDirection: 'row',
       padding: 10,
-      borderTopColor: 'black',
+     // borderTopColor: 'black',
       
     },
+    infoBlue: {
+      backgroundColor: "#FFF",
+      borderWidth: 5,
+      borderColor: 'blue',
+      //backgroundColor: "#b31942",
+      borderRadius: 30,
+      width: "100%",
+      height: 45,
+      marginBottom: 9,
+      flex: 0.6,
+      flexDirection: 'row',
+      padding: 10,
+     // borderTopColor: 'black',
+      
+    },
+    
     
   })
 
