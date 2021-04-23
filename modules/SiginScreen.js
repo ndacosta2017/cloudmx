@@ -137,6 +137,18 @@ function LoginScreen ({navigation}) {
     return false 
   }
 
+
+
+        <TouchableOpacity>
+        <Text style={styles.forgot_button} 
+        onPress = {() =>  navigation.navigate('Password') } >
+          Forgot Password?
+        </Text>
+      </TouchableOpacity>
+
+
+
+
   */
   //const [password, setPass] = useState(""); style={styles.logo}
 
@@ -168,12 +180,7 @@ function LoginScreen ({navigation}) {
         />
       </View>
 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button} 
-        onPress = {() =>  navigation.navigate('Password') } >
-          Forgot Password?
-        </Text>
-      </TouchableOpacity>
+
 
       <TouchableOpacity style={styles.loginBtn}
       onPress = { () => check(navigation) } >
@@ -241,7 +248,7 @@ function LoginScreen ({navigation}) {
       flex: 0.3,
       width: 200,
       height: 200,
-      marginBottom: 10
+      marginBottom: 20
       //resizeMode: 'contain',
     },
     

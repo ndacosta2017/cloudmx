@@ -54,17 +54,29 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       
     ];
 
+    //const storage = [];
+
     var i = maintenanceID
+   const  SampleFunction=(item)=>{
+ 
+      Alert.alert(item);
+   
+    }
 
+    function ren(){
+      return storage.map((item, index) => <Text key={index}>{item.text}</Text>);
 
-    const Item = ({ title }) => (
+    }
+   
+
+    const Item = ({  }) => (
       <View style={styles.item}>
-        <Text style={styles.title} onPress={() => navigation.navigate('Air',{itemID, adminViewer,aircraftID,hangarID})}>{title}</Text>
+        <Text style={styles.title} >{}</Text>
       </View>
     );
 
     const renderItem = ({ item }) => (
-      <Item title={item.title}/>
+      <Item title={item}/>
     );
 
     const requestOptions = 
@@ -114,10 +126,72 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test//maintenance-history', sendOptions)
 
     //const Serial = data[i].serial_No
+    /*
+    
+         <View style={{flex:1}}>
+        {isLoading ? <ActivityIndicator/> : (
+         <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <Item title={item.LAST_FLT}/>
+          )}
+          keyExtractor={(item, index) => item.key}
+          />
+         )}
+        {isLoading ? <ActivityIndicator/> : (
+         <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <Item title={item.LAST_FLT}/>
+          )}
+          keyExtractor={(item, index) => item.key}
+          />
+         )}
+        </View>
+    
+    */ 
   //  console.log('NUMBER: ',i)
     console.log('DATA: ',data)
-   // console.log(json)
+    console.log('SIZE: ',data.length)
+    var len = data.length
 
+    var storage = [];
+
+
+
+    for(var j = 0; j < len;j++)
+    {
+    //  console.log(data[j].LAST_FLT)
+      storage.push(data[j].LAST_FLT)
+     // console.log("STORAGE",storage)
+    }
+    console.log("STORAGE",storage)
+   // console.log(json)
+   async function send(i){
+    var json = {};
+        json[0] = [];
+        json.sortie = Sortie.trim();
+        json.last_flt = LASTFLIGHT.trim();
+        json.team = Maintenance_H.trim();
+        json.w = stat.trim();
+        json.status = Status.trim();
+        json.etic = ETIC_H.trim();
+        json.location = Location.trim();
+        json.micaps = Micaps_H.trim();
+        json.remark = Remarks.trim();
+    const sendOptions = 
+        {
+            method: 'POST',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(json)
+        }
+    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
+    alert("Update Complete")
+
+    erase()
+    reload()
+    }
     var stat = ''
 
     const [Serial, setSerial] = useState('');
@@ -141,23 +215,36 @@ function MaintenanceHistoryScreen ({route, navigation}) {
 
       <View style={styles.info}>
         <Text style={styles.inputText}>Maintenance Team ID:  </Text>
+        <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[0].Maintenance_Team_ID}
-            </Text>
+                <FlatList
+                data={data}
+                keyExtractor={({ id }, index) => id}
+                renderItem={({ item }) => (
+                  <Text>{item.leadMaintainer}</Text>
+                )}
+              />
             )}
+            </View>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
       </View>
 
       <View style={styles.info}>
+
         <Text style={styles.inputText}>Location:  </Text>
+        <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[0].LOCATION}
-            </Text>
+         <FlatList
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+            <Text>{item.LOCATION}</Text>
+          )}
+        />
             )}
+            </View>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
@@ -165,11 +252,17 @@ function MaintenanceHistoryScreen ({route, navigation}) {
 
       <View style={styles.info}>
         <Text style={styles.inputText}>MICAPS:  </Text>
+        <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[0].MICAPS}
-            </Text>
+        <FlatList
+        data={data}
+        keyExtractor={({ id }, index) => id}
+        renderItem={({ item }) => (
+          <Text>{item.MICAPS}</Text>
+        )}
+      />
             )}
+            </View>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
@@ -178,10 +271,54 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       <View style={styles.info}>
         <Text style={styles.inputText}>ETIC:  </Text>
         {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[0].timeOfCompletion}
-            </Text>
+                  <FlatList
+                  data={data}
+                  keyExtractor={({ id }, index) => id}
+                  renderItem={({ item }) => (
+                    <Text>{item.timeOfCompletion}</Text>
+                  )}
+                />
             )}
+        <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+        </TextInput>
+      </View>
+
+      <View style={styles.info}>
+        <Text style={styles.inputText}>SORTIE_TYPE:  </Text>
+        <View style={styles.max}>
+        {isLoading ? <ActivityIndicator/> : (
+                  <FlatList
+                  
+                  data={data}
+                  keyExtractor={({ id }, index) => id}
+                  renderItem={({ item }) => (
+                    <View>
+                    <Text >{item.SORTIE_TYPE}</Text>
+                    </View>
+                  )}
+                />
+            )}
+        </View>
+        <TextInput style={styles.infoField} placeholder={place}
+            editable={adminViewer}> 
+        </TextInput>
+      </View>
+
+
+      <View style={styles.info}>
+        <Text style={styles.inputText}>Remarks:  </Text>
+        <View style={styles.max}>
+        {isLoading ? <ActivityIndicator/> : (
+         <FlatList
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+            <Text>{item.Remarks}</Text>
+          )}
+        />
+            )}
+            </View>
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
@@ -190,9 +327,13 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       <View style={styles.info}>
         <Text style={styles.inputText}>Maintenance Date:  </Text>
         {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[0].Maintenance_Date}
-            </Text>
+        <FlatList
+        data={data}
+        keyExtractor={({ id }, index) => id}
+        renderItem={({ item }) => (
+          <Text>{item.Maintenance_Date}</Text>
+        )}
+      />
             )}
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
@@ -201,30 +342,40 @@ function MaintenanceHistoryScreen ({route, navigation}) {
 
       <View style={styles.info}>
         <Text style={styles.inputText}>LAST_FLT:  </Text>
-        {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-              {data[0].LAST_FLT}
-            </Text>
-            )}
+ 
+          {isLoading ? <ActivityIndicator/> : (
+          <View style={styles.MainContainer}> 
+            
+            <FlatList
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+            <Text>{item.LAST_FLT}</Text>
+          )}
+        />
+
+           </View>
+          )}
+        
         <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer}> 
         </TextInput>
       </View>
       
 
-      <View style={styles.info}>
-        <Text style={styles.inputText}>Dates:</Text>
-        <TextInput style={styles.infoField} placeholder={place}
-            editable={adminViewer}> 
-        </TextInput>
-        <View style={{flex:1}}>
-         <FlatList
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          />
+   
+
+      <View style={styles.infoBlue}>
+         <View style={styles.basicRow}>
+       
+          <Text style={styles.history} onPress={ (adminViewer) ? 
+            () => {send(i)} : 
+            () => alert('You are not an Administrator. You can not edit data') }>
+             Update
+          </Text>
+          </View>
         </View>
-      </View>
+
 
 
     </View>
@@ -246,7 +397,12 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       alignItems: "center",
       justifyContent: "center",
     },
-  
+    basicRow:{
+      flex:1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     image: {
       marginBottom: 40,
     },
@@ -261,19 +417,24 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     },
 
     history:{
-      color: 'white',
+      color: 'black',
       justifyContent: 'center',
       alignSelf: 'center',
       alignItems: 'center',
-      marginLeft: '30%'
+     // marginLeft: '30%'
     },
-  
+    title: {
+      color: 'black'
+    },
+    item: {
+      color: 'black'
+    },
     TextInput: {
       height: 50,
       flex: 1,
       padding: 10,
       marginLeft: 20,
-      color: 'white'
+      color: 'black'
     },
     titleText: {
       fontSize: 60,
@@ -312,6 +473,9 @@ function MaintenanceHistoryScreen ({route, navigation}) {
       justifyContent: "center",
      // marginTop: 40,
       backgroundColor: "#000080",
+    },
+    max: {
+      width: '30%'
     },
     inputText: {
       color: '#000'

@@ -139,7 +139,7 @@ function AirCraftScreen ({route, navigation}) {
         json.last_flt = LASTFLIGHT.trim();
         json.team = Maintenance_H.trim();
         json.w = stat.trim();
-        json.status = selectedLanguage.trim();
+        json.status = Status.trim();
         json.etic = ETIC_H.trim();
         json.location = Location.trim();
         json.micaps = Micaps_H.trim();
