@@ -149,7 +149,7 @@ function AllAircraftScreen ({route, navigation}) {
              keyExtractor={item => item.serial_No}
               renderItem={({ item }) => (
               <Text style={styles.inputText} onPress={() => 
-                navigation.navigate('Air',{itemID, adminViewer,aircraftID:item.index-1,hangarID})}>
+                navigation.navigate('Air',{itemID, adminViewer,aircraftID:item.index,hangarID})}>
                 Aircraft {item.index}: {item.serial_No}
               </Text>
              )}

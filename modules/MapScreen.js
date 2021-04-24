@@ -38,9 +38,13 @@ function MapScreen ({route, navigation}) {
   
   const [isLoading, setLoading] = useState(true);
   const [isBuildingLoading, setBuildingLoading] = useState(true);
+  const [isLocation, setLocationLoading] = useState(true);
+
   const [data, setData] = useState([]);
   const [BuildingData, setBuildingData] = useState([]);
-  
+  const [LocationData, setLocationData] = useState([]);
+
+
   function reload(){
     fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users',requestOptions)
     .then((response) => response.json())
@@ -57,6 +61,16 @@ function MapScreen ({route, navigation}) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(json)
 }
+
+
+useEffect(() => {
+  fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/location',requestOptions)
+    .then((response) => response.json())
+    .then((json) => setLocationData(json))
+    .catch((error) => console.error(error))
+    .finally(() => setLocationLoading(false));
+}, []);
+
 
 useEffect(() => {
     fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/users',requestOptions)
@@ -75,7 +89,9 @@ useEffect(() => {
   }, []);
 
  // console.log('data: ',data)
-  console.log('building data: ',BuildingData)
+ // console.log('building data: ',BuildingData)
+   console.log('location data: ',LocationData)
+
 
 
  //var here = data[0].userFirstName
