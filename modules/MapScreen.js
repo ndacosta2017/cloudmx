@@ -75,7 +75,7 @@ useEffect(() => {
   }, []);
 
  // console.log('data: ',data)
- // console.log('building data: ',BuildingData)
+  console.log('building data: ',BuildingData)
 
 
  //var here = data[0].userFirstName
@@ -132,6 +132,32 @@ useEffect(() => {
           () => alert('You are not an Administrator. You can not new add users') } >
         <Text style={{color: 'black'}}>
           Add A New Viewer User
+        </Text>
+      </TouchableOpacity>
+   </View>
+  </View>
+ </View>
+
+ <View style={styles.hangar}> 
+  <View style={styles.hangarInfo}>
+   <Text style={styles.titleText}>Maintain Aircraft</Text>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+       onPress={ (adminViewer) ? 
+        () => navigation.navigate('Add Aircraft',{itemID,adminViewer}) : 
+        () => alert('You are not an Administrator. You can not new admin users') } >
+        <Text style={{color: 'black'}}>
+          Add Aircraft
+        </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} 
+        onPress={ (adminViewer) ? 
+          () => navigation.navigate('Remove Aircraft',{itemID,adminViewer}) : 
+          () => alert('You are not an Administrator. You can not new add users') } >
+        <Text style={{color: 'black'}}>
+          Delete Aircraft
         </Text>
       </TouchableOpacity>
    </View>

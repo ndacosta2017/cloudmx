@@ -9,6 +9,8 @@ import AirCraftScreen from './modules/AirCraftScreen';
 import HangarScreen from './modules/HangarScreen';
 import MaintenanceHistoryScreen from './modules/MaintenanceScreen';
 import AllAircraftScreen from './modules/AllAircrafts'
+import AddAircraftScreen from './modules/AddAircraft'
+import RemoveAircraftScreen from './modules/RemoveAircraft'
 import PassWordScreen from './modules/PassWordRecovery'
 import AddUserScreen from './modules/AddUsers'
 import AddAdminScreen from './modules/AddAdmin'
@@ -41,6 +43,12 @@ function App(navigation) {
       
       <Stack.Screen name="Map" component={MapScreen} 
          options={{title: 'Home'}}/>
+
+      <Stack.Screen name="Add Aircraft" component={AddAircraftScreen} 
+         options={{title: 'Add Aircraft'}}/>
+
+      <Stack.Screen name="Remove Aircraft" component={RemoveAircraftScreen} 
+         options={{title: 'Remove Aircraft'}}/>
 
       <Stack.Screen name="AddUser" component={AddUserScreen} 
          options={{title: 'Add User'}}/>

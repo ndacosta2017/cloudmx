@@ -162,7 +162,8 @@ function MaintenanceHistoryScreen ({route, navigation}) {
     for(var j = 0; j < len;j++)
     {
     //  console.log(data[j].LAST_FLT)
-      storage.push(data[j].LAST_FLT)
+    storage.push(data[j])
+    storage[j].index = j
      // console.log("STORAGE",storage)
     }
     console.log("STORAGE",storage)
@@ -208,7 +209,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <Text style={styles.inputText}>Aircraft Serial:  </Text>
         {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
-              {data[0].aircraftNo}
+              {storage[0].aircraftNo}
             </Text>
             )}
       </View>
@@ -218,10 +219,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
                 <FlatList
-                data={data}
-                keyExtractor={({ id }, index) => id}
+                data={storage}
+                keyExtractor={item => item.index.toString()}
                 renderItem={({ item }) => (
-                  <Text>{item.leadMaintainer}</Text>
+                  <Text>{item.index}: {item.leadMaintainer}</Text>
                 )}
               />
             )}
@@ -237,10 +238,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
          <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
+          data={storage}
+          keyExtractor={item => item.index.toString()}
           renderItem={({ item }) => (
-            <Text>{item.LOCATION}</Text>
+            <Text>{item.index}: {item.LOCATION}</Text>
           )}
         />
             )}
@@ -255,10 +256,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
         <FlatList
-        data={data}
-        keyExtractor={({ id }, index) => id}
+        data={storage}
+        keyExtractor={item => item.index.toString()}
         renderItem={({ item }) => (
-          <Text>{item.MICAPS}</Text>
+          <Text>{item.index}: {item.MICAPS}</Text>
         )}
       />
             )}
@@ -272,10 +273,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <Text style={styles.inputText}>ETIC:  </Text>
         {isLoading ? <ActivityIndicator/> : (
                   <FlatList
-                  data={data}
-                  keyExtractor={({ id }, index) => id}
+                  data={storage}
+                  keyExtractor={item => item.index.toString()}
                   renderItem={({ item }) => (
-                    <Text>{item.timeOfCompletion}</Text>
+                    <Text>{item.index}: {item.timeOfCompletion}</Text>
                   )}
                 />
             )}
@@ -290,11 +291,11 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         {isLoading ? <ActivityIndicator/> : (
                   <FlatList
                   
-                  data={data}
-                  keyExtractor={({ id }, index) => id}
+                  data={storage}
+                  keyExtractor={item => item.index.toString()}
                   renderItem={({ item }) => (
                     <View>
-                    <Text >{item.SORTIE_TYPE}</Text>
+                    <Text >{item.index}: {item.SORTIE_TYPE}</Text>
                     </View>
                   )}
                 />
@@ -311,10 +312,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <View style={styles.max}>
         {isLoading ? <ActivityIndicator/> : (
          <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
+          data={storage}
+          keyExtractor={item => item.index.toString()}
           renderItem={({ item }) => (
-            <Text>{item.Remarks}</Text>
+            <Text>{item.index}: {item.Remarks}</Text>
           )}
         />
             )}
@@ -328,10 +329,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         <Text style={styles.inputText}>Maintenance Date:  </Text>
         {isLoading ? <ActivityIndicator/> : (
         <FlatList
-        data={data}
-        keyExtractor={({ id }, index) => id}
+        data={storage}
+        keyExtractor={item => item.index.toString()}
         renderItem={({ item }) => (
-          <Text>{item.Maintenance_Date}</Text>
+          <Text>{item.index}: {item.Maintenance_Date}</Text>
         )}
       />
             )}
@@ -347,10 +348,10 @@ function MaintenanceHistoryScreen ({route, navigation}) {
           <View style={styles.MainContainer}> 
             
             <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
+          data={storage}
+          keyExtractor={item => item.index.toString()}
           renderItem={({ item }) => (
-            <Text>{item.LAST_FLT}</Text>
+            <Text>{item.index}: {item.LAST_FLT}</Text>
           )}
         />
 
