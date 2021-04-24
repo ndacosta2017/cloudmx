@@ -69,7 +69,7 @@ function RemoveAircraftScreen ({route, navigation}) {
     );
 
     //var adminViewer = true
-    var place = ' Update Data'
+    var place = ' Remove Data'
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -110,6 +110,7 @@ function RemoveAircraftScreen ({route, navigation}) {
     const [ETIC_H, setETIC] = useState('');
 
     const erase =()=> {
+      setSerial('')
       setStatus('')
       setLocation('')
       setRemarks('')
@@ -135,15 +136,8 @@ function RemoveAircraftScreen ({route, navigation}) {
     async function send(i){
     var json = {};
         json[0] = [];
-        json.sortie = Sortie.trim();
-        json.last_flt = LASTFLIGHT.trim();
-        json.team = Maintenance_H.trim();
-        json.w = stat.trim();
-        json.status = Status.trim();
-        json.etic = ETIC_H.trim();
-        json.location = Location.trim();
-        json.micaps = Micaps_H.trim();
-        json.remark = Remarks.trim();
+        json.w = Serial.trim();
+       
     const sendOptions = 
         {
             method: 'POST',
@@ -151,8 +145,8 @@ function RemoveAircraftScreen ({route, navigation}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(json)
         }
-    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
-    alert("Update Complete")
+    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/remove', sendOptions)
+    alert("Removal Complete")
 
     erase()
     reload()
@@ -234,21 +228,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
         </View>
 
       
-        <View style={styles.infoBlue}>
-          <View style={styles.display}>
-            <Text style={styles.inputText}>
-              Aircraft Status: 
-            </Text>
-          
-            {isLoading ? <ActivityIndicator/> : (
-            <Text style={styles.inputText}>
-            </Text>
-            )}
-          </View>
-          <TextInput style={styles.infoField} placeholder={place} value={Status}
-            editable={adminViewer} onChangeText={(Status) => setStatus(Status)}> 
-          </TextInput>
-        </View>
+    
 
   
 

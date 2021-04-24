@@ -50,7 +50,7 @@ function AddUserScreen ({route, navigation}) {
   }
 
 
-    var place = ' Update Data'
+    var place = ' Add Data'
 
     const requestOptions = {
       method: 'POST',
@@ -58,8 +58,8 @@ function AddUserScreen ({route, navigation}) {
       headers: { 'Content-Type': 'application/json' }
   }
   
-
-    function send(){
+    //ANDY DO THE ALERT
+    async function send(){
       if (Username.length > 0 && Password.length > 0 && FirstName.length > 0 && LastName.length > 0){
         //update this field of data[i]
         console.log('User:', Username)
@@ -77,8 +77,9 @@ function AddUserScreen ({route, navigation}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(json)
         }
-        fetch(url, requestOptions)
-        console.log('Pass:', Password)
+        await fetch(url, requestOptions)
+       // console.log('Pass:', Password)
+        alert('Addition Complete')
       }
     }
   
@@ -99,7 +100,7 @@ function AddUserScreen ({route, navigation}) {
         <View style={styles.info}>
         <View style={styles.display}>
         <Text style={styles.inputText}>
-              Add User Name: 
+               Username: 
             </Text>
             <Text style={styles.inputText}>
               {empty}
@@ -112,7 +113,7 @@ function AddUserScreen ({route, navigation}) {
   
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add User Password: </Text>
+          <Text style={styles.inputText}>  Password: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(Password) => setPassword(Password)}>  
@@ -121,7 +122,7 @@ function AddUserScreen ({route, navigation}) {
 
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add User's First Name: </Text>
+          <Text style={styles.inputText}>  First Name: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(FirstName) => setFirstName(FirstName)}>  
@@ -130,7 +131,7 @@ function AddUserScreen ({route, navigation}) {
 
         <View style={styles.info}>
         <View style={styles.display}>
-          <Text style={styles.inputText}>Add User's Last Name: </Text>
+          <Text style={styles.inputText}> Last Name: </Text>
         </View>
           <TextInput style={styles.infoField} placeholder={place}
             editable={adminViewer} onChangeText={(LastName) => setLastName(LastName)}>  
@@ -142,7 +143,7 @@ function AddUserScreen ({route, navigation}) {
           <Text style={styles.history} onPress={(adminViewer) ? 
             () => send() : 
             () => alert('You are not an Administrator. You can not update data') }>
-             Update
+             Add
           </Text>
           </View>
         </View>

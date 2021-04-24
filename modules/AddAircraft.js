@@ -69,7 +69,7 @@ function AddAircraftScreen ({route, navigation}) {
     );
 
     //var adminViewer = true
-    var place = ' Update Data'
+    var place = ' Add Data'
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -153,7 +153,7 @@ function AddAircraftScreen ({route, navigation}) {
             body: JSON.stringify(json)
         }
     await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/add', sendOptions)
-    alert("Update Complete")
+    alert("Addition Complete")
 
     erase()
     reload()
