@@ -56,7 +56,7 @@ function AllAircraftScreen ({route, navigation}) {
       {
       //  console.log(data[j].LAST_FLT)
         storage.push(data[j])
-        storage[j].index = j+1
+        storage[j].index = j
        // console.log("STORAGE",storage)
       }
       //const Serial = data[i].serial_No

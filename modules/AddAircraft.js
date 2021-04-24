@@ -110,6 +110,7 @@ function AddAircraftScreen ({route, navigation}) {
     const [ETIC_H, setETIC] = useState('');
 
     const erase =()=> {
+      setSerial('')
       setStatus('')
       setLocation('')
       setRemarks('')
@@ -138,7 +139,7 @@ function AddAircraftScreen ({route, navigation}) {
         json.sortie = Sortie.trim();
         json.last_flt = LASTFLIGHT.trim();
         json.team = Maintenance_H.trim();
-        json.w = stat.trim();
+        json.w = Serial.trim();
         json.status = Status.trim();
         json.etic = ETIC_H.trim();
         json.location = Location.trim();
@@ -151,7 +152,7 @@ function AddAircraftScreen ({route, navigation}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(json)
         }
-    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/update', sendOptions)
+    await fetch('https://7n9cvyktjg.execute-api.us-east-1.amazonaws.com/test/aircraft/add', sendOptions)
     alert("Update Complete")
 
     erase()
@@ -221,7 +222,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
       <View style={styles.infoBlue}>
           <View style={styles.display}>
             <Text style={styles.inputText}>
-              Aircraft Serial: 
+              *Aircraft Serial: 
             </Text>
             {isLoading ? <ActivityIndicator/> : (
             <Text style={styles.inputText}>
@@ -237,7 +238,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
         <View style={styles.infoBlue}>
           <View style={styles.display}>
             <Text style={styles.inputText}>
-              Aircraft Status: 
+              *Aircraft Status: 
             </Text>
           
             {isLoading ? <ActivityIndicator/> : (
@@ -387,7 +388,7 @@ const [selectedLanguage, setSelectedLanguage] = useState();
           <Text style={styles.history} onPress={ (adminViewer) ? 
             () => {send(i)} : 
             () => alert('You are not an Administrator. You can not edit data') }>
-             Update
+             Add
           </Text>
           </View>
         </View>
