@@ -88,9 +88,9 @@ useEffect(() => {
       .finally(() => setBuildingLoading(false));
   }, []);
 
-  console.log('data: ',data)
-  console.log('building data: ',BuildingData)
-  console.log('location data: ',LocationData)
+  //console.log('data: ',data)
+  //console.log('building data: ',BuildingData)
+ //  console.log('location data: ',LocationData)
 
   var storage = []
   var len = LocationData.length
@@ -103,7 +103,7 @@ useEffect(() => {
     // console.log("STORAGE",storage)
    }
  //  console.log('LEN',len)
- //  console.log('STORAGE: ',storage)
+  // console.log('STORAGE: ',storage)
 
    var loc = []
 
@@ -243,7 +243,7 @@ useEffect(() => {
       <View style={styles.topText}>
        {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {loc[0]} 
+          Aircraft #: {loc[0]} 
         </Text>
         )}
       </View>
@@ -268,7 +268,7 @@ useEffect(() => {
       <View style={styles.topText}>
       {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {loc[1]} 
+          Aircraft #: {loc[1]} 
         </Text>
         )}
       </View>
@@ -296,7 +296,7 @@ useEffect(() => {
       <View style={styles.topText}>
       {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {loc[3]} 
+          Aircraft #: {loc[3]} 
         </Text>
         )}
       </View>
@@ -321,7 +321,7 @@ useEffect(() => {
       <View style={styles.topText}>
       {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {loc[3]} 
+          Aircraft #: {loc[3]} 
         </Text>
         )}
       </View>
@@ -347,7 +347,7 @@ useEffect(() => {
       <View style={styles.topText}>
       {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {loc[4]} 
+          Aircraft #: {loc[4]} 
         </Text>
         )}
       </View>
