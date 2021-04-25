@@ -150,7 +150,7 @@ function AllAircraftScreen ({route, navigation}) {
               renderItem={({ item }) => (
               <Text style={styles.inputText} onPress={() => 
                 navigation.navigate('Air',{itemID, adminViewer,aircraftID:item.index,hangarID})}>
-                Aircraft {item.index}: {item.serial_No}
+                Aircraft {item.index+1}: {item.serial_No}
               </Text>
              )}
              />

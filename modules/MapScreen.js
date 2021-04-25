@@ -88,13 +88,45 @@ useEffect(() => {
       .finally(() => setBuildingLoading(false));
   }, []);
 
- // console.log('data: ',data)
- // console.log('building data: ',BuildingData)
-   console.log('location data: ',LocationData)
+  console.log('data: ',data)
+  console.log('building data: ',BuildingData)
+  console.log('location data: ',LocationData)
 
+  var storage = []
+  var len = LocationData.length
+   
+   for(var j = 0; j < len;j++)
+   {
+   //  console.log(data[j].LAST_FLT)
+      storage.push(LocationData[j])
+      storage[j].index = j
+    // console.log("STORAGE",storage)
+   }
+ //  console.log('LEN',len)
+ //  console.log('STORAGE: ',storage)
 
+   var loc = []
 
- //var here = data[0].userFirstName
+   for(var f = 0; f < BuildingData.length;f++)
+   {
+   //  console.log(data[j].LAST_FLT)
+
+     for (var y=0;y < len;y++){
+
+      if (BuildingData[f].building_Name == storage[y].LOCATION){
+        loc[f] = storage[y].serial_No
+        //console.log("TRUE TRUE TRUE")
+      }
+
+     }
+
+     if (loc[f] == null || loc[f]==undefined){
+       loc[f] = 'N/A'
+     }
+    // console.log("STORAGE",storage)
+   }
+     //console.log("LOC",loc)
+ //var here = data[0].userFirttName
 
   //var ritemID = itemID
   // onPress={() => navigation.navigate('Hangar',{itemID,adminViewer})}
@@ -209,9 +241,9 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} >
       <View style={styles.topText}>
-       {isBuildingLoading ? <ActivityIndicator/> : (
+       {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {BuildingData[0].building_status} 
+          Aircraft Serial #: {loc[0]} 
         </Text>
         )}
       </View>
@@ -234,9 +266,9 @@ useEffect(() => {
    <View style={styles.infoButton}>
       <TouchableOpacity style={{}} >
       <View style={styles.topText}>
-       {isBuildingLoading ? <ActivityIndicator/> : (
+      {isLocation ? <ActivityIndicator/> : (
         <Text style={styles.boxText}>
-          Aircraft Serial #: {BuildingData[1].building_status} 
+          Aircraft Serial #: {loc[1]} 
         </Text>
         )}
       </View>
@@ -255,7 +287,19 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:3})} >
         <Text style={styles.boxText}>
           View Building Info
+          
         </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} >
+      <View style={styles.topText}>
+      {isLocation ? <ActivityIndicator/> : (
+        <Text style={styles.boxText}>
+          Aircraft Serial #: {loc[3]} 
+        </Text>
+        )}
+      </View>
       </TouchableOpacity>
    </View>
   </View>
@@ -272,6 +316,17 @@ useEffect(() => {
         </Text>
       </TouchableOpacity>
    </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} >
+      <View style={styles.topText}>
+      {isLocation ? <ActivityIndicator/> : (
+        <Text style={styles.boxText}>
+          Aircraft Serial #: {loc[3]} 
+        </Text>
+        )}
+      </View>
+      </TouchableOpacity>
+   </View>
   </View>
  </View>
  
@@ -285,6 +340,17 @@ useEffect(() => {
         <Text style={styles.boxText}>
           View Building Info
         </Text>
+      </TouchableOpacity>
+   </View>
+   <View style={styles.infoButton}>
+      <TouchableOpacity style={{}} >
+      <View style={styles.topText}>
+      {isLocation ? <ActivityIndicator/> : (
+        <Text style={styles.boxText}>
+          Aircraft Serial #: {loc[4]} 
+        </Text>
+        )}
+      </View>
       </TouchableOpacity>
    </View>
   </View>
@@ -304,9 +370,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:6})} >
         <Text style={styles.inputText} >S - 1</Text>
          <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[6].building_status} 
+             {loc[6]} 
            </Text>
            )}
          </View>
@@ -318,9 +384,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:10})} >
         <Text style={styles.inputText} >S - 2</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[10].building_status} 
+             {loc[10]} 
            </Text>
            )}
          </View>
@@ -334,9 +400,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:11})} >
         <Text style={styles.inputText} >S - 3</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[11].building_status} 
+             {loc[11]} 
            </Text>
            )}
          </View>
@@ -348,9 +414,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:12})} >
         <Text style={styles.inputText} >S - 4</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[12].building_status} 
+             {loc[12]} 
            </Text>
            )}
          </View>
@@ -363,9 +429,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:13})} >
         <Text style={styles.inputText} >S - 5</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[13].building_status} 
+             {loc[13]} 
            </Text>
            )}
          </View>
@@ -376,9 +442,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:14})} >
         <Text style={styles.inputText} >S - 6</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[14].building_status} 
+             {loc[14]} 
            </Text>
            )}
          </View>
@@ -391,9 +457,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:15})} >
         <Text style={styles.inputText} >S - 7</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[15].building_status} 
+             {loc[15]} 
            </Text>
            )}
          </View>
@@ -404,9 +470,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:16})} >
         <Text style={styles.inputText} >S - 8</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[16].building_status} 
+             {loc[16]} 
            </Text>
            )}
          </View>
@@ -419,9 +485,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:17})} >
         <Text style={styles.inputText} >S - 9</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[17].building_status} 
+             {loc[17]} 
            </Text>
            )}
          </View>
@@ -431,9 +497,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:7})} >
         <Text style={styles.inputText} >S - 10</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[7].building_status} 
+             {loc[7]} 
            </Text>
            )}
          </View>
@@ -446,9 +512,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:8})} >
         <Text style={styles.inputText} >S - 11</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[8].building_status} 
+             {loc[8]} 
            </Text>
            )}
          </View>
@@ -459,9 +525,9 @@ useEffect(() => {
         onPress={() => navigation.navigate('Hangar',{itemID,adminViewer,aircraftID,hangarID:9})}>
         <Text style={styles.inputText} >S - 12</Text>
         <View >
-          {isBuildingLoading ? <ActivityIndicator/> : (
+          {isLocation ? <ActivityIndicator/> : (
            <Text style={styles.inputText}>
-             {BuildingData[9].building_status} 
+             {loc[9]} 
            </Text>
            )}
          </View>
@@ -539,6 +605,7 @@ const styles = StyleSheet.create({
     color: '#000', 
     //fontSize: 15, 
     padding: 5,
+  //  width: '90%'
   
   },
   topBold: {
@@ -558,6 +625,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   boxText: {
+ //   width: '50%',
     color: '#000'
   },
 

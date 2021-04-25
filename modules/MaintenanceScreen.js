@@ -222,7 +222,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
                 data={storage}
                 keyExtractor={item => item.index.toString()}
                 renderItem={({ item }) => (
-                  <Text>{item.index}: {item.leadMaintainer}</Text>
+                  <Text>{item.index+1}: {item.leadMaintainer}</Text>
                 )}
               />
             )}
@@ -241,7 +241,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
           data={storage}
           keyExtractor={item => item.index.toString()}
           renderItem={({ item }) => (
-            <Text>{item.index}: {item.LOCATION}</Text>
+            <Text>{item.index+1}: {item.LOCATION}</Text>
           )}
         />
             )}
@@ -259,7 +259,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         data={storage}
         keyExtractor={item => item.index.toString()}
         renderItem={({ item }) => (
-          <Text>{item.index}: {item.MICAPS}</Text>
+          <Text>{item.index+1}: {item.MICAPS}</Text>
         )}
       />
             )}
@@ -276,7 +276,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
                   data={storage}
                   keyExtractor={item => item.index.toString()}
                   renderItem={({ item }) => (
-                    <Text>{item.index}: {item.timeOfCompletion}</Text>
+                    <Text>{item.index+1}: {item.timeOfCompletion}</Text>
                   )}
                 />
             )}
@@ -295,7 +295,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
                   keyExtractor={item => item.index.toString()}
                   renderItem={({ item }) => (
                     <View>
-                    <Text >{item.index}: {item.SORTIE_TYPE}</Text>
+                    <Text >{item.index+1}: {item.SORTIE_TYPE}</Text>
                     </View>
                   )}
                 />
@@ -315,7 +315,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
           data={storage}
           keyExtractor={item => item.index.toString()}
           renderItem={({ item }) => (
-            <Text>{item.index}: {item.Remarks}</Text>
+            <Text>{item.index+1}: {item.Remarks}</Text>
           )}
         />
             )}
@@ -332,7 +332,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
         data={storage}
         keyExtractor={item => item.index.toString()}
         renderItem={({ item }) => (
-          <Text>{item.index}: {item.Maintenance_Date}</Text>
+          <Text>{item.index+1}: {item.Maintenance_Date}</Text>
         )}
       />
             )}
@@ -351,7 +351,7 @@ function MaintenanceHistoryScreen ({route, navigation}) {
           data={storage}
           keyExtractor={item => item.index.toString()}
           renderItem={({ item }) => (
-            <Text>{item.index}: {item.LAST_FLT}</Text>
+            <Text>{item.index+1}: {item.LAST_FLT}</Text>
           )}
         />
 
