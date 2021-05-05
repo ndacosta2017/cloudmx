@@ -104,7 +104,7 @@ useEffect(() => {
    }
  //  console.log('LEN',len)
   // console.log('STORAGE: ',storage)
-
+ 
    var loc = []
 
    for(var f = 0; f < BuildingData.length;f++)
